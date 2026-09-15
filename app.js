@@ -93,8 +93,8 @@ const EXAM_REGISTRY = [
   {
     id: "sales-cloud-consultant",
     name: "Sales Cloud Consultant",
-    code: "SALES-CLOUD-CONSULTANT",
-    subtitle: "Salesforce Certified · Sales Cloud Consultant · Practice Questions",
+    code: "SALES-CON-201",
+    subtitle: "Salesforce Certified · SALES-CON-201 · Practice Questions",
     passingScore: 62,
     examMinutes: 105,
     bank: "sales-consultant.json",

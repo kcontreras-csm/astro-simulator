@@ -1194,10 +1194,10 @@
    }
   ],
   "answer": [
-   "C"
+   "A"
   ],
   "multi": false,
-  "explanation": "Overlay splits credit supporting team members without having to total 100%, so a member's share can be less than 100% of the revenue amount. Revenue (percentage/amount) splits must always add up to 100% of the opportunity."
+  "explanation": "Revenue splits can be entered as a percentage or as an amount; when reps need to see what share of the revenue each team member is credited with — a percentage that is less than 100% of the opportunity amount — the Opportunity Percentage Split is the attribution method to use. Amount splits show currency values rather than shares, and Overlay splits credit supporting members outside the revenue total. (Community sources agree on Percentage Split; the wording of this question is garbled in every published version.)"
  },
  {
   "id": 51,
@@ -1317,7 +1317,7 @@
    "B"
   ],
   "multi": false,
-  "explanation": "Universal Process Notation (UPN) is Salesforce's recommended way to diagram business processes: a high-level view that drills down into detail across multiple levels, ideal for a complex process that spans several slides. Capability models and value stream maps don't show process flow."
+  "explanation": "Universal Process Notation (UPN) is Salesforce's recommended notation for showing how a process works: a top-level diagram that drills down into as many levels of detail as needed, which fits a complex process that spans multiple slides. A Capability Model shows what the business does rather than how a process flows, and a Value Stream Map focuses on value and waste across a stream. (Some flashcard sources key Capability Model; UPN matches the 'how the processes will work' requirement.)"
  },
  {
   "id": 56,
@@ -1514,7 +1514,7 @@
  {
   "id": 64,
   "category": "Data, Reports & Dashboards",
-  "text": "Universal Containers has hired a new employee for the global sales leadership team. The employee is interested in fostering friendly competition between account executives, with an emphasis on reinforcing activities that drive sales. Which action should help support the sales teams?",
+  "text": "Universal Containers has hired a new employee for the global sales leadership team. The employee is interested in fostering friendly competition between account executives, with an emphasis on reinforcing activities that drive sales. Historically, for every four prospect meetings held, one sale was generated. Which action should help support the sales teams?",
   "options": [
    {
     "letter": "A",
@@ -1533,7 +1533,7 @@
    "C"
   ],
   "multi": false,
-  "explanation": "The goal is to reinforce the activities that drive sales, so the leaderboard should rank reps on the sales activity itself — prospect meetings held. Counting opportunities created rewards pipeline entry rather than the behavior being encouraged."
+  "explanation": "The scenario states that one sale historically results from every four prospect meetings, so prospect meetings are the activity that drives sales. A leaderboard ranking account executives on meetings held reinforces exactly that behavior; counting opportunities created or closed-won by region rewards outcomes rather than the activity."
  },
  {
   "id": 65,
@@ -2514,10 +2514,10 @@
    }
   ],
   "answer": [
-   "B"
+   "A"
   ],
   "multi": false,
-  "explanation": "With standard (non-dated) exchange rates, changing a rate updates the converted amounts on existing records, and Salesforce documents that closed opportunities are the exception that keep their original converted values in some contexts. Multiple Currencies can't be disabled once enabled, which rules out Option C."
+  "explanation": "Multiple Currencies is supported on Accounts, Opportunities, Leads, Cases, Opportunity Product Schedules and other standard objects, including in reporting — that is the true consideration. Option B is false: with standard (non-dated) exchange rates, a rate change updates the converted amounts on all records, closed opportunities included, which is why Advanced Currency Management exists. Option C is false because Multiple Currencies can't be disabled once enabled."
  },
  {
   "id": 106,
@@ -3021,7 +3021,7 @@
    "A"
   ],
   "multi": false,
-  "explanation": "When orders are used with contracts, the Contract lookup is required on the order and appears as a required field on the layout. Orders can only be added to active contracts, and line items can't be added or removed once an order is activated (reduction orders are the exception)."
+  "explanation": "This is the answer the exam keys, and the other two statements are definitely false: order products can't be added or removed once an order is activated (only reduction orders change quantities), and orders can only be associated with contracts in Activated status. In practice the Contract lookup is optional unless your org requires it, so treat Option A as the least-wrong statement rather than an absolute rule."
  },
  {
   "id": 127,
@@ -3042,10 +3042,10 @@
    }
   ],
   "answer": [
-   "C"
+   "A"
   ],
   "multi": false,
-  "explanation": "Churn and partner relationships live at the Account level, so a report comparing accounts with and without onsite-visit activities shows where the increased spending is going and whether visited accounts retain better. Opportunity-based reporting misses partners that have no open deal."
+  "explanation": "Reporting on opportunities with and without onsite activities ties the extra spend on in-person meetings to pipeline outcomes, which is how leadership can judge whether the investment is paying off. Reporting only on the activity type counts visits but shows no effect, and account-level reporting doesn't connect the visits to deals. (Community answers to this question are split; this follows the exam key.)"
  },
  {
   "id": 128,
@@ -3282,10 +3282,10 @@
    }
   ],
   "answer": [
-   "A"
+   "C"
   ],
   "multi": false,
-  "explanation": "Only one territory model can be active at a time, so the new fiscal-year structure must be built in Planning, validated, and then activated — which deactivates the current model. User assignments aren't migrated automatically, and model access is governed by permissions, not the key consideration here."
+  "explanation": "Enterprise Territory Management access is granted through the Manage Territories / View Setup permissions on profiles or permission sets, so the consultant must plan who can build and activate the new model. Two other facts also matter: only one territory model can be active at a time (so the new model is built in Planning and activated to replace the old one), and territory user assignments are not carried over to a new model — Option B is false."
  },
  {
   "id": 138,
@@ -3570,10 +3570,10 @@
    }
   ],
   "answer": [
-   "B"
+   "A"
   ],
   "multi": false,
-  "explanation": "Default territory assignment on opportunities is what lets users work with an active territory model's territories on opportunities and pick one when the automatic assignment isn't right. Account sharing and the Manage Territories permission (an admin permission) don't provide the user-facing search."
+  "explanation": "Users can search for and assign any territory from the active model to an opportunity only when they have sharing access to the opportunity's account (Full Access); otherwise they are limited to territories already associated with that account. Default territory assignment (Option B) is the automatic filter-based path, and Manage Territories (Option C) is an admin permission for building the model, not a user-facing assignment tool."
  },
  {
   "id": 150,
@@ -4458,10 +4458,10 @@
    }
   ],
   "answer": [
-   "A"
+   "C"
   ],
   "multi": false,
-  "explanation": "Setting project milestones during Discovery gives the engagement a timeline and checkpoints that later planning builds upon. The implementation plan and sales process definitions are produced in the Plan phase using what Discovery uncovered."
+  "explanation": "Discovery is where the consultant understands and documents the customer's current and desired sales processes, alongside establishing project goals and success metrics. Milestones and the implementation plan are Plan-phase outputs built on what Discovery uncovers."
  },
  {
   "id": 187,
@@ -4554,9 +4554,9 @@
    }
   ],
   "answer": [
-   "A"
+   "B"
   ],
   "multi": false,
-  "explanation": "Lead assignment rules can apply the assignee's default record type: when Lead Settings/assignment is configured to use the assignee's record type, the record type on the User (their profile's default for Lead) is applied. Building a flow is more work than the standard option."
+  "explanation": "Lead Settings includes an option that controls whether a lead created and assigned by assignment rules keeps the creator's default record type or takes the assignee's default record type; selecting the assignee option meets the requirement with no automation. There is no per-user record type setting (Option A), and a flow (Option C) is unnecessary."
  }
 ]
