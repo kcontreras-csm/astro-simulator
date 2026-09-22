@@ -64,7 +64,7 @@ const EXAM_REGISTRY = [
     passingScore: 63,
     examMinutes: 105,
     bank: "app-builder.json",
-    count: 236,
+    count: 153,
     categories: [
       "Salesforce Fundamentals",
       "Data Modeling & Management",
@@ -3013,6 +3013,15 @@ const state = {
 let TAB_CATEGORIES = [null, ...CATEGORY_LIST, null];
 let FULL_EXAM_TAB = TAB_CATEGORIES.length - 1;
 
+// Virtual category collecting every question whose answer key was flagged during the
+// bank audit (q.review === true). It gets its own tab and dashboard row but the
+// questions keep their real category for scoring.
+const REVIEW_CATEGORY = "\u2691 Flagged Keys";
+function questionsInCategory(cat) {
+  if (cat === REVIEW_CATEGORY) return QUESTIONS.filter(q => q.review);
+  return QUESTIONS.filter(q => q.category === cat);
+}
+
 // Point the app at a given exam config + question bank and rebuild the tab model.
 function deriveCategories(bank) {
   const seen = [];
@@ -3026,6 +3035,7 @@ function configureExam(cfg, bank) {
   CATEGORY_LIST = (cfg.categories && cfg.categories.length)
     ? cfg.categories.slice()
     : deriveCategories(QUESTIONS);
+  if (QUESTIONS.some(q => q.review)) CATEGORY_LIST.push(REVIEW_CATEGORY);
   TAB_CATEGORIES = [null, ...CATEGORY_LIST, null];
   FULL_EXAM_TAB = TAB_CATEGORIES.length - 1;
   state.timerSeconds = exam.examMinutes * 60;
@@ -3882,7 +3892,7 @@ function renderTabButtons() {
 
     let countBadge = "";
     if (i > 0 && i < FULL_EXAM_TAB) {
-      const count = QUESTIONS.filter(q => q.category === TAB_CATEGORIES[i]).length;
+      const count = questionsInCategory(TAB_CATEGORIES[i]).length;
       countBadge = `<span class="tab-badge">${count}</span>`;
     } else if (i === FULL_EXAM_TAB) {
       countBadge = `<span class="tab-badge">${QUESTIONS.length}</span>`;
@@ -3909,7 +3919,7 @@ function renderDashboard() {
 
   const topicList = CATEGORY_LIST.map(cat => ({
     name: cat,
-    count: QUESTIONS.filter(q => q.category === cat).length
+    count: questionsInCategory(cat).length
   }));
 
   pane.innerHTML = `
@@ -3978,7 +3988,7 @@ function renderAllQuizTabs() {
   // Tabs 1-6: Category-filtered
   for (let i = 1; i < FULL_EXAM_TAB; i++) {
     const cat = TAB_CATEGORIES[i];
-    const questions = QUESTIONS.filter(q => q.category === cat);
+    const questions = questionsInCategory(cat);
     renderQuizTab(i, cat, questions);
   }
   // Full exam tab (shuffled copy)
@@ -3991,7 +4001,7 @@ function getTabQuestions(tabIndex) {
     return [...QUESTIONS];
   }
   const cat = TAB_CATEGORIES[tabIndex];
-  return QUESTIONS.filter(q => q.category === cat);
+  return questionsInCategory(cat);
 }
 
 // Return a shallow copy of a question with its options in random order.
@@ -4096,6 +4106,7 @@ function renderQuestionCard(q, num) {
           <div class="question-text">
             ${q.text}
             ${isMulti ? `<span class="multi-badge">Select ${q.answer.length}</span>` : ''}
+            ${q.review ? `<span class="review-badge" title="Answer key flagged during audit">\u2691 Flagged</span>` : ''}
           </div>
         </div>
         ${flagButtonHTML(q.id)}
@@ -4114,6 +4125,7 @@ function renderQuestionCard(q, num) {
       </div>
       <div class="explanation-panel" id="explanation-${q.id}">
         ${q.hook ? `<div class="answer-hook"><span class="hook-key">🔑 Key</span><span class="hook-text">${q.hook}</span></div>` : ''}
+        ${q.review ? `<div class="review-note"><span class="review-key">\u2691 Flagged</span><span class="review-text">${q.reviewNote || 'Answer key flagged during the bank audit.'}</span></div>` : ''}
         <h4>💡 Explanation</h4>
         <p>${q.explanation}</p>
       </div>
@@ -4257,7 +4269,7 @@ function updateScoreMatrix() {
 function updateTabProgress() {
   for (let i = 1; i < FULL_EXAM_TAB; i++) {
     const cat = TAB_CATEGORIES[i];
-    const questions = QUESTIONS.filter(q => q.category === cat);
+    const questions = questionsInCategory(cat);
     const answered = questions.filter(q => state.submitted[q.id]).length;
     const el = $(`#progress-${i}`);
     if (el) el.textContent = `${answered} / ${questions.length} Answered`;
@@ -4350,7 +4362,7 @@ function submitExam() {
   let totalCorrect = 0;
   const sectionResults = {};
 
-  CATEGORY_LIST.forEach(cat => {
+  CATEGORY_LIST.filter(cat => cat !== REVIEW_CATEGORY).forEach(cat => {
     sectionResults[cat] = { total: 0, correct: 0 };
   });
 

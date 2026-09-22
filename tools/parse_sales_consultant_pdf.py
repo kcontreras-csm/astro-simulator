@@ -2,7 +2,7 @@
 """Parse the Sales Cloud Consultant dump PDF into a raw question list.
 
 Usage:  python3 tools/parse_sales_consultant_pdf.py
-Reads   datasets/source-snapshots/sales-consultant/Sales-Cloud-Consultant.pdf  (via pdftotext -layout)
+Reads   datasets/source-snapshots/sales-consultant/Sales-Cloud-Consultant (1).pdf  (via pdftotext -layout)
 Writes  datasets/source-snapshots/sales-consultant/sales-consultant-raw.json
 
 Same DXperience "Question: N / A. / Answer: X" layout as the App Builder dump, but this
@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-PDF = ROOT / "datasets/source-snapshots/sales-consultant/Sales-Cloud-Consultant.pdf"
+PDF = ROOT / "datasets/source-snapshots/sales-consultant/Sales-Cloud-Consultant (1).pdf"
 OUT = ROOT / "datasets/source-snapshots/sales-consultant/sales-consultant-raw.json"
 
 NOISE = re.compile(

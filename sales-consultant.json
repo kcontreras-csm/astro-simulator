@@ -45,7 +45,9 @@
    "A"
   ],
   "multi": false,
-  "explanation": "Inline editing on the Forecasts page lets managers adjust forecast amounts directly during the pipeline review without opening each opportunity. Forecasts can't bulk-edit opportunities (Option B), and moving opportunities between stages in a list view (Option C) is a rep task that doesn't update forecast adjustments."
+  "explanation": "Inline editing on the Forecasts page lets managers adjust forecast amounts directly during the pipeline review without opening each opportunity. Forecasts can't bulk-edit opportunities (Option B), and moving opportunities between stages in a list view (Option C) is a rep task that doesn't update forecast adjustments.",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 3,
@@ -189,7 +191,9 @@
    "C"
   ],
   "multi": false,
-  "explanation": "Historical Trending reports snapshot field values over time, so the VP can see how accounts and pipeline change and spot the drop-offs that signal churn. Year-over-year sales and stage-duration reports show revenue and velocity, not retention trends."
+  "explanation": "Historical Trending reports snapshot field values over time, so the VP can see how accounts and pipeline change and spot the drop-offs that signal churn. Year-over-year sales and stage-duration reports show revenue and velocity, not retention trends.",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 9,
@@ -330,10 +334,12 @@
    }
   ],
   "answer": [
-   "A"
+   "B"
   ],
   "multi": false,
-  "explanation": "Lead conversion in the Salesforce mobile app is controlled by the Enable Conversions for Salesforce Mobile setting under Lead Settings. Once enabled, reps convert leads natively on their phones — no Global Action or AppExchange package is needed."
+  "explanation": "Exam key: create a Global Action that lets reps convert leads directly from the Salesforce mobile app, so field reps don't need the desktop site. Note (documentation): current releases also offer a native *Enable Conversions for Salesforce Mobile* option under Lead Settings, which is the simpler modern answer — this key predates that setting.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 15,
@@ -378,10 +384,12 @@
    }
   ],
   "answer": [
-   "B"
+   "A"
   ],
   "multi": false,
-  "explanation": "The Account Hierarchy is only a display of Parent Account relationships; it doesn't grant record access. With a Private OWD, owning the parent gives no access to child accounts, so child records must be shared manually or via sharing rules/teams."
+  "explanation": "Exam key: because the rep has access to the parent account, the Account Hierarchy gives them access to the child accounts. Note (documentation): the Account Hierarchy is only a display of Parent Account relationships and does not grant record access under a Private OWD — in practice child accounts must be shared via sharing rules, account teams, or manual sharing.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 17,
@@ -429,7 +437,9 @@
    "B"
   ],
   "multi": false,
-  "explanation": "Leads that score high yet show little interest mean the model rewards passive attributes over behavior; increasing points for actions that indicate buying intent (demo requests, pricing views) makes the score reflect real interest. Counting marketing touches or persona fit doesn't measure intent."
+  "explanation": "Leads that score high yet show little interest mean the model rewards passive attributes over behavior; increasing points for actions that indicate buying intent (demo requests, pricing views) makes the score reflect real interest. Counting marketing touches or persona fit doesn't measure intent.",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 19,
@@ -597,7 +607,9 @@
    "B"
   ],
   "multi": false,
-  "explanation": "Read/Write access on opportunities is granted by an Opportunity sharing rule that targets the users who hold the Executive Sponsor role (for example via a public group), raising them above the org-wide Read-Only default. Account sharing rules grant account access, and a flow isn't a supported sharing mechanism."
+  "explanation": "Read/Write access on opportunities is granted by an Opportunity sharing rule that targets the users who hold the Executive Sponsor role (for example via a public group), raising them above the org-wide Read-Only default. Account sharing rules grant account access, and a flow isn't a supported sharing mechanism.",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 26,
@@ -813,7 +825,9 @@
    "A"
   ],
   "multi": false,
-  "explanation": "Reporting on records created from the Salesforce mobile app (using the Created By Device/mobile-sourced data) shows reps are actually working in the mobile app. Login History by device shows access, not usage; profile permissions show nothing about adoption."
+  "explanation": "Reporting on records created from the Salesforce mobile app (using the Created By Device/mobile-sourced data) shows reps are actually working in the mobile app. Login History by device shows access, not usage; profile permissions show nothing about adoption.",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 35,
@@ -1269,7 +1283,9 @@
    "C"
   ],
   "multi": false,
-  "explanation": "Collaborative Forecasting gives leadership a single, structured view of the pipeline by forecast category with roll-ups by manager, replacing ad-hoc updates with consistent numbers. Sales Path guides reps through stages, and a Sales Engagement report tracks outreach, not pipeline commitments."
+  "explanation": "Collaborative Forecasting gives leadership a single, structured view of the pipeline by forecast category with roll-ups by manager, replacing ad-hoc updates with consistent numbers. Sales Path guides reps through stages, and a Sales Engagement report tracks outreach, not pipeline commitments.",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 54,
@@ -1317,7 +1333,9 @@
    "B"
   ],
   "multi": false,
-  "explanation": "Universal Process Notation (UPN) is Salesforce's recommended notation for showing how a process works: a top-level diagram that drills down into as many levels of detail as needed, which fits a complex process that spans multiple slides. A Capability Model shows what the business does rather than how a process flows, and a Value Stream Map focuses on value and waste across a stream. (Some flashcard sources key Capability Model; UPN matches the 'how the processes will work' requirement.)"
+  "explanation": "Universal Process Notation (UPN) is Salesforce's recommended notation for showing how a process works: a top-level diagram that drills down into as many levels of detail as needed, which fits a complex process that spans multiple slides. A Capability Model shows what the business does rather than how a process flows, and a Value Stream Map focuses on value and waste across a stream. (Some flashcard sources key Capability Model; UPN matches the 'how the processes will work' requirement.)",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 56,
@@ -1437,7 +1455,9 @@
    "B"
   ],
   "multi": false,
-  "explanation": "Kanban view can summarize each column by a numeric or currency field (for example total Amount), but it can't summarize roll-up summary fields and shows only a handful of fields per card. Option B is the true statement."
+  "explanation": "Kanban view can summarize each column by a numeric or currency field (for example total Amount), but it can't summarize roll-up summary fields and shows only a handful of fields per card. Option B is the true statement.",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 61,
@@ -1514,7 +1534,7 @@
  {
   "id": 64,
   "category": "Data, Reports & Dashboards",
-  "text": "Universal Containers has hired a new employee for the global sales leadership team. The employee is interested in fostering friendly competition between account executives, with an emphasis on reinforcing activities that drive sales. Historically, for every four prospect meetings held, one sale was generated. Which action should help support the sales teams?",
+  "text": "Universal Containers has hired a new employee for the global sales leadership team. The employee is interested in fostering friendly competition between account executives, with an emphasis on reinforcing activities that drive sales. Which action should help support the sales teams?",
   "options": [
    {
     "letter": "A",
@@ -1530,10 +1550,12 @@
    }
   ],
   "answer": [
-   "C"
+   "B"
   ],
   "multi": false,
-  "explanation": "The scenario states that one sale historically results from every four prospect meetings, so prospect meetings are the activity that drives sales. A leaderboard ranking account executives on meetings held reinforces exactly that behavior; counting opportunities created or closed-won by region rewards outcomes rather than the activity."
+  "explanation": "Exam key: a regional leaderboard of account executives who created the most opportunities makes the competition visible and rewards the activity that feeds the pipeline. Note: the official version of this question adds that four prospect meetings historically produce one sale, which makes a meetings-held leaderboard the intended answer in that version.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 65,
@@ -1722,10 +1744,12 @@
    }
   ],
   "answer": [
-   "B"
+   "C"
   ],
   "multi": false,
-  "explanation": "Contacts to Multiple Accounts keeps one contact record and relates it to each company the contractor works for over time, preserving the account-level history as the person moves. Person Accounts model individuals as accounts and don't solve the many-company history problem."
+  "explanation": "Exam key: implement Person Accounts so each contractor is represented as an individual and the relationship to each company can be tracked over time. Note (documentation): Contacts to Multiple Accounts is the feature Salesforce designed for a person who moves between companies, keeping one contact record with a history of related accounts.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 73,
@@ -1794,10 +1818,12 @@
    }
   ],
   "answer": [
-   "A"
+   "C"
   ],
   "multi": false,
-  "explanation": "Under a Public Read-Only model a rep can edit opportunities they own but only read opportunities owned by others — owning the account doesn't grant edit rights on its opportunities. So the editable opportunities are the ones the rep owns, and the rest belong to other users."
+  "explanation": "Under a Public Read-Only model the rep can only edit opportunities they own or ones where they have been granted Read/Write — for example as an Account Team member whose Opportunity Access is set to Read/Write on some accounts. On accounts where they hold no such team access, they can only read opportunities owned by others, which explains the inconsistent editing experience.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 76,
@@ -1818,10 +1844,12 @@
    }
   ],
   "answer": [
-   "C"
+   "B"
   ],
   "multi": false,
-  "explanation": "A report filtered on the key metrics (stage, probability) that managers subscribe to lets each manager choose their own delivery frequency. A record-triggered flow emails on every change with no per-manager control, and Chatter feed tracking is noisy."
+  "explanation": "Exam key: a record-triggered flow that fires when the stage or probability changes and sends the managers an email alert gives them visibility as opportunities hit key milestones. Note: managers who want to control how often they receive emails are usually better served by subscribing to a report on those criteria (the community-preferred answer).",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 77,
@@ -1866,10 +1894,12 @@
    }
   ],
   "answer": [
-   "B"
+   "C"
   ],
   "multi": false,
-  "explanation": "With OWD Private, a criteria-based (or owner-based) sharing rule that grants Read/Write to the Complaints Specialist public group opens all Complaint records to exactly those users. There is no object-level visibility setting for a group, and Apex managed sharing is unnecessary when a declarative rule fits."
+  "explanation": "Exam key: set the Complaint object's default visibility so that only users in the Complaints Specialist public group can access the records. Note (documentation): there is no per-group object visibility setting in Salesforce — the declarative way to meet this requirement is a Private OWD plus a sharing rule that grants Read/Write to the public group.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 79,
@@ -1938,10 +1968,12 @@
    }
   ],
   "answer": [
-   "B"
+   "A"
   ],
   "multi": false,
-  "explanation": "A monthly executive steering committee provides the governance body to manage budget, resolve direction and priority conflicts, and split development capacity equitably across the business lines — taking those debates out of the project meeting. Weekly all-hands calls don't decide priority, and splitting the team fragments the platform."
+  "explanation": "Exam key: a weekly all-hands call with business and technology resources gives every line of business a regular forum to review direction and priority, taking that debate out of the project meeting. Note: many practitioners would instead recommend a monthly executive steering committee to own budget and prioritization decisions.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 82,
@@ -2010,10 +2042,12 @@
    }
   ],
   "answer": [
-   "B"
+   "A"
   ],
   "multi": false,
-  "explanation": "Adoption is measured by usage, and the number of user logins in the last month is the standard first-level adoption KPI. Closed Lost counts measure sales outcomes, and Community contacts are unrelated."
+  "explanation": "Exam key: the number of opportunities Closed Lost in the last month — reps recording lost deals shows the pipeline is being maintained in Sales Cloud rather than outside it. Note: the most common adoption KPI in Salesforce guidance is user logins over a period, so treat this key with caution.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 85,
@@ -2106,10 +2140,12 @@
    }
   ],
   "answer": [
-   "C"
+   "A"
   ],
   "multi": false,
-  "explanation": "Salesforce's ALM best practice is to build in a Developer sandbox and then promote changes to a testing/staging environment (for example a Partial or Full Copy sandbox) for validation before production. Building directly in a Partial Copy sandbox mixes development with testing."
+  "explanation": "Exam key: build the new process in a Partial Copy sandbox (which carries representative data) and test the changes in the staging environment before production. Note: Salesforce's ALM guidance more commonly places development in a Developer sandbox and testing in a Partial/Full Copy staging sandbox.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 89,
@@ -2445,7 +2481,9 @@
    "A"
   ],
   "multi": false,
-  "explanation": "Sales Engagement cadences prescribe the exact sequence and type of outreach steps, so reps follow a defined process instead of logging generic activities to hit a quota. Cadences make the intended interactions explicit and measurable, which directly addresses the misunderstanding."
+  "explanation": "Sales Engagement cadences prescribe the exact sequence and type of outreach steps, so reps follow a defined process instead of logging generic activities to hit a quota. Cadences make the intended interactions explicit and measurable, which directly addresses the misunderstanding.",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 103,
@@ -2514,10 +2552,12 @@
    }
   ],
   "answer": [
-   "A"
+   "B"
   ],
   "multi": false,
-  "explanation": "Multiple Currencies is supported on Accounts, Opportunities, Leads, Cases, Opportunity Product Schedules and other standard objects, including in reporting — that is the true consideration. Option B is false: with standard (non-dated) exchange rates, a rate change updates the converted amounts on all records, closed opportunities included, which is why Advanced Currency Management exists. Option C is false because Multiple Currencies can't be disabled once enabled."
+  "explanation": "Exam key: when Multiple Currencies is enabled, changing an exchange rate updates the converted amounts on all records except closed opportunities. Note (documentation): Salesforce Help states that standard (non-dated) rate changes update all records including closed opportunities; preserving historical rates requires Advanced Currency Management. The other two options are also false — Multiple Currencies cannot be disabled once enabled.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 106,
@@ -2706,10 +2746,12 @@
    }
   ],
   "answer": [
-   "C"
+   "A"
   ],
   "multi": false,
-  "explanation": "Cumulative Forecast Rollups show each rep a cumulative number across forecast categories (for example Best Case includes Commit and Closed), which is the 'predicted to win based on all forecast categories' view requested. A formula field can't reproduce forecast roll-ups, and the summary component only displays existing rollups."
+  "explanation": "Exam key: a formula field based on the forecast category lets reps see their individual predicted numbers across categories on the opportunity. Note: the feature built for this view is Cumulative Forecast Rollups, which totals Closed, Commit, Best Case and Pipeline cumulatively on the Forecasts page.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 114,
@@ -2829,7 +2871,9 @@
    "B"
   ],
   "multi": false,
-  "explanation": "Salesforce's three yearly releases introduce changes users didn't ask for, so training end users after each deployment is what turns new features into adoption. Collecting stakeholder input and prioritizing executive requests apply to internally initiated changes."
+  "explanation": "Salesforce's three yearly releases introduce changes users didn't ask for, so training end users after each deployment is what turns new features into adoption. Collecting stakeholder input and prioritizing executive requests apply to internally initiated changes.",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 119,
@@ -3021,7 +3065,9 @@
    "A"
   ],
   "multi": false,
-  "explanation": "This is the answer the exam keys, and the other two statements are definitely false: order products can't be added or removed once an order is activated (only reduction orders change quantities), and orders can only be associated with contracts in Activated status. In practice the Contract lookup is optional unless your org requires it, so treat Option A as the least-wrong statement rather than an absolute rule."
+  "explanation": "This is the answer the exam keys, and the other two statements are definitely false: order products can't be added or removed once an order is activated (only reduction orders change quantities), and orders can only be associated with contracts in Activated status. In practice the Contract lookup is optional unless your org requires it, so treat Option A as the least-wrong statement rather than an absolute rule.",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 127,
@@ -3045,7 +3091,9 @@
    "A"
   ],
   "multi": false,
-  "explanation": "Reporting on opportunities with and without onsite activities ties the extra spend on in-person meetings to pipeline outcomes, which is how leadership can judge whether the investment is paying off. Reporting only on the activity type counts visits but shows no effect, and account-level reporting doesn't connect the visits to deals. (Community answers to this question are split; this follows the exam key.)"
+  "explanation": "Reporting on opportunities with and without onsite activities ties the extra spend on in-person meetings to pipeline outcomes, which is how leadership can judge whether the investment is paying off. Reporting only on the activity type counts visits but shows no effect, and account-level reporting doesn't connect the visits to deals. (Community answers to this question are split; this follows the exam key.)",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 128,
@@ -3285,7 +3333,9 @@
    "C"
   ],
   "multi": false,
-  "explanation": "Enterprise Territory Management access is granted through the Manage Territories / View Setup permissions on profiles or permission sets, so the consultant must plan who can build and activate the new model. Two other facts also matter: only one territory model can be active at a time (so the new model is built in Planning and activated to replace the old one), and territory user assignments are not carried over to a new model — Option B is false."
+  "explanation": "Enterprise Territory Management access is granted through the Manage Territories / View Setup permissions on profiles or permission sets, so the consultant must plan who can build and activate the new model. Two other facts also matter: only one territory model can be active at a time (so the new model is built in Planning and activated to replace the old one), and territory user assignments are not carried over to a new model — Option B is false.",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 138,
@@ -3474,10 +3524,12 @@
    }
   ],
   "answer": [
-   "C"
+   "A"
   ],
   "multi": false,
-  "explanation": "A product that's referenced by opportunities can't be deleted, but unchecking Active on the Product record retires it: reps can no longer add it to new opportunities while historical line items stay intact. A deletion flow or archiving every price book entry is unnecessary."
+  "explanation": "Exam key: create a flow that deletes the retiring Product from the Price Book so it can no longer be selected. Note (documentation): a product referenced by opportunities cannot be deleted; the documented way to retire it is to uncheck Active on the Product (or archive it), which is simpler than automation.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 146,
@@ -3570,10 +3622,12 @@
    }
   ],
   "answer": [
-   "A"
+   "B"
   ],
   "multi": false,
-  "explanation": "Users can search for and assign any territory from the active model to an opportunity only when they have sharing access to the opportunity's account (Full Access); otherwise they are limited to territories already associated with that account. Default territory assignment (Option B) is the automatic filter-based path, and Manage Territories (Option C) is an admin permission for building the model, not a user-facing assignment tool."
+  "explanation": "Exam key: use default Sales Territories so users can search the active territory model and assign a territory to an opportunity. Note: community discussion of this question stresses that users can only assign any active territory when they have sharing access to the opportunity's account.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 150,
@@ -3810,10 +3864,12 @@
    }
   ],
   "answer": [
-   "C"
+   "B"
   ],
   "multi": false,
-  "explanation": "In the Planning state, all account assignment rules should be run so the consultant can review the resulting account-to-territory assignments before activating the model (see also the territory detail page). Reassigned accounts are visible in Planning, and no special profile is required for territory reports."
+  "explanation": "Exam key: a territory model must be activated before the reassigned accounts can be viewed. Note (documentation): account assignments produced by running rules in the Planning state are visible on the territory detail page before activation — see also Q26.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 160,
@@ -4146,10 +4202,12 @@
    }
   ],
   "answer": [
-   "B"
+   "C"
   ],
   "multi": false,
-  "explanation": "Merging two companies' Sales Cloud usage into one org starts with discovery: documenting each company's existing business practices and use cases with senior managers, which then drives the project plan. Exporting and merging data before understanding the processes is premature."
+  "explanation": "Exam key: export the data from the competitor's system and merge it into CK's org so everyone is working from one set of records while use cases are documented. Note: standard consulting practice is to run discovery sessions and document both companies' processes before any data merge.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 174,
@@ -4242,10 +4300,12 @@
    }
   ],
   "answer": [
-   "B"
+   "A"
   ],
   "multi": false,
-  "explanation": "Setting the Account OWD to Public Read-Only lets every rep view any account while edit rights stay with owners (and team members granted access), which stops out-of-scope edits and preserves collaboration. Private would hide accounts, and a Read/Write sharing rule to everyone keeps the problem."
+  "explanation": "Exam key: create an Account sharing rule that grants Read/Write access to all accounts, so reps continue to collaborate while ownership defines responsibility. Note: with OWD already Public Read/Write, the documented way to allow view-all but edit-own is to change the Account OWD to Public Read-Only.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 178,
@@ -4362,10 +4422,12 @@
    }
   ],
   "answer": [
-   "A"
+   "B"
   ],
   "multi": false,
-  "explanation": "The Scope section of a SOW defines the deliverables and responsibilities — including who trains users and how training is delivered. Background gives context, and Terms and Conditions cover legal and commercial terms."
+  "explanation": "Exam key: the Background section of the SOW, which sets out the project context including how users will be trained and by whom. Note: in most SOW templates training deliverables and responsibilities are defined in the Scope section.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 183,
@@ -4413,7 +4475,9 @@
    "B"
   ],
   "multi": false,
-  "explanation": "Einstein Discovery (in CRM Analytics) can combine Salesforce data with external datasets and surface the lifetime-spend insight as an embedded component on the account page. Data Pipelines prepares data but doesn't display it, and Sales Engagement is for outreach."
+  "explanation": "Einstein Discovery (in CRM Analytics) can combine Salesforce data with external datasets and surface the lifetime-spend insight as an embedded component on the account page. Data Pipelines prepares data but doesn't display it, and Sales Engagement is for outreach.",
+  "review": true,
+  "reviewNote": "Judgment call — community sources split on this answer; see explanation."
  },
  {
   "id": 185,
@@ -4458,10 +4522,12 @@
    }
   ],
   "answer": [
-   "C"
+   "A"
   ],
   "multi": false,
-  "explanation": "Discovery is where the consultant understands and documents the customer's current and desired sales processes, alongside establishing project goals and success metrics. Milestones and the implementation plan are Plan-phase outputs built on what Discovery uncovers."
+  "explanation": "Exam key: set project milestones during Discovery so the engagement has a timeline and checkpoints that later planning builds on. Note: several prep sources treat Discovery as the phase where sales processes and success metrics are defined, and place milestones in the Plan phase.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 187,
@@ -4530,10 +4596,12 @@
    }
   ],
   "answer": [
-   "A"
+   "C"
   ],
   "multi": false,
-  "explanation": "Roll-up summary fields work only across master-detail relationships, and Account Hierarchy is a lookup (Parent Account), so a roll-up can't total child accounts' won opportunities. An after-save flow that updates a custom total on the parent is the declarative way to meet the requirement."
+  "explanation": "Exam key: create a roll-up summary field on the Account that totals the closed-won opportunity value from the child accounts. Note (documentation): roll-up summary fields require a master-detail relationship, and Account Hierarchy uses a lookup (Parent Account), so in practice a record-triggered flow or Apex is needed to total across the hierarchy.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  },
  {
   "id": 190,
@@ -4554,9 +4622,11 @@
    }
   ],
   "answer": [
-   "B"
+   "A"
   ],
   "multi": false,
-  "explanation": "Lead Settings includes an option that controls whether a lead created and assigned by assignment rules keeps the creator's default record type or takes the assignee's default record type; selecting the assignee option meets the requirement with no automation. There is no per-user record type setting (Option A), and a flow (Option C) is unnecessary."
+  "explanation": "Exam key: match the record type of the assignee in the User settings so leads assigned by rules take the assignee's default record type. Note (documentation): Salesforce Help places this behaviour in Lead Settings, where the admin chooses whether an assigned lead keeps the creator's record type or takes the assignee's default record type.",
+  "review": true,
+  "reviewNote": "Exam key kept as printed, but Salesforce documentation points to a different answer — see the note in the explanation."
  }
 ]

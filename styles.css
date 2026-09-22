@@ -634,6 +634,47 @@ body {
   vertical-align: middle;
 }
 
+/* Audit review flag — question whose answer key was flagged during the bank audit */
+.review-badge {
+  display: inline-block;
+  background: #FFF4E0;
+  color: #9A5B00;
+  font-size: .68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 50px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.review-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  background: #FFF4E0;
+  border: 1px solid #F2C879;
+  border-radius: var(--radius-md);
+}
+
+.review-note .review-key {
+  flex-shrink: 0;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .02em;
+  color: #9A5B00;
+  text-transform: uppercase;
+  padding-top: 1px;
+}
+
+.review-note .review-text {
+  font-size: .86rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
 /* Answer Options */
 .options-list {
   padding: 4px 24px 18px;
@@ -1114,6 +1155,10 @@ body {
 /* Hardcoded light backgrounds → dark surfaces */
 :root[data-appearance="dark"] .explanation-panel { background: rgba(255,255,255,.04); }
 :root[data-appearance="dark"] .multi-badge { background: rgba(155,89,208,.22); color: #E7D5F7; }
+:root[data-appearance="dark"] .review-badge,
+:root[data-appearance="dark"] .review-note { background: rgba(242,200,121,.16); border-color: rgba(242,200,121,.45); }
+:root[data-appearance="dark"] .review-badge,
+:root[data-appearance="dark"] .review-note .review-key { color: #F2C879; }
 
 /* ============================================================
    HEADER CONTROLS CLUSTER + THEME MENU

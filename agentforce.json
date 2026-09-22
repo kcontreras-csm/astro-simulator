@@ -2222,7 +2222,9 @@
   ],
   "multi": false,
   "explanation": "In Copilot Builder (now Agent Builder), the dynamic panel next to the conversation preview shows how each utterance is planned, and turning on the debugging view exposes the inputs the flow received and the outputs it returned — the fastest way to see where a flow-based action goes wrong. Options B and C rely on passively reading values or session logs, which don't show the action's live input/output payloads.",
-  "hook": "\"troubleshoot copilot flow action\" → Dynamic Panel, turn on dynamic debugging to show inputs/outputs"
+  "hook": "\"troubleshoot copilot flow action\" → Dynamic Panel, turn on dynamic debugging to show inputs/outputs",
+  "review": true,
+  "reviewNote": "Judgment call — sources disagree on this answer; see explanation."
  },
  {
   "id": 90,
@@ -2272,7 +2274,9 @@
   ],
   "multi": false,
   "explanation": "Digital Wallet is the consumption-tracking feature for Agentforce and Flex credits: it shows how many credits each agent, action, and test run has used, so it gives visibility into credits consumed by testing. Agentforce Analytics reports on agent performance, and Testing Center executes tests but doesn't meter credit spend.",
-  "hook": "\"visibility into credit usage from testing\" → Digital Wallet (tracks credit consumption)"
+  "hook": "\"visibility into credit usage from testing\" → Digital Wallet (tracks credit consumption)",
+  "review": true,
+  "reviewNote": "Judgment call — sources disagree on this answer; see explanation."
  },
  {
   "id": 92,
@@ -4772,7 +4776,9 @@
   ],
   "multi": false,
   "explanation": "Order status that lives in an external ERP can be grounded in real time by an invocable Apex class exposed to Prompt Builder as an Apex resource — the Apex makes the callout and returns the value as a merge field. External object merge fields would require modeling the ERP through Salesforce Connect and using that object as the template's record, and External Services responses aren't exposed directly as prompt merge fields.",
-  "hook": "\"order status in external ERP\" → Apex Merge Fields (callout grounding; explanation blank)"
+  "hook": "\"order status in external ERP\" → Apex Merge Fields (callout grounding; explanation blank)",
+  "review": true,
+  "reviewNote": "Judgment call — sources disagree on this answer; see explanation."
  },
  {
   "id": 192,
@@ -5172,7 +5178,9 @@
   ],
   "multi": false,
   "explanation": "Agentforce SDR is a prebuilt agent that engages and nurtures inbound leads by email — it reads replies, answers questions, and books meetings over that channel — so UC should plan for email as the working channel rather than a Messaging or website deployment.",
-  "hook": "\"SDR Agent channel consideration\" → works only in the Email channel (explanation blank)"
+  "hook": "\"SDR Agent channel consideration\" → works only in the Email channel (explanation blank)",
+  "review": true,
+  "reviewNote": "Judgment call — sources disagree on this answer; see explanation."
  },
  {
   "id": 208,
@@ -5672,7 +5680,9 @@
   ],
   "multi": false,
   "explanation": "Analyzing an interaction end to end — from the first utterance through every topic and action to the final resolution — is what Agent Insights provides through session tracing. Agent Optimization is focused on identifying improvement opportunities from aggregate results, and \"Agent Inspection\" is not an Agentforce feature.",
-  "hook": "\"analyze complete interactions, request to resolution\" → Agent Insights (explanation empty, best guess)"
+  "hook": "\"analyze complete interactions, request to resolution\" → Agent Insights (explanation empty, best guess)",
+  "review": true,
+  "reviewNote": "Judgment call — sources disagree on this answer; see explanation."
  },
  {
   "id": 228,
@@ -7047,7 +7057,9 @@
   ],
   "multi": false,
   "explanation": "The correct answer is B because the requirement is immediate, deterministic sequencing after account creation. Procedural instructions in Agent Script are designed for multi-step workflows where the agent must run actions in a required order without waiting for another user turn. The specialist should structure the workflow so that after account creation succeeds, the procedural logic runs the verification email step before advancing to profile setup. Option A is phrased incorrectly because run belongs in Agent Script procedural instructions, not inside the create_account action itself. Option C is weaker because making an action available does not force immediate execution. Salesforce Agent Script recipes describe action chaining with run, step tracking, procedural instructions, and automatic follow-up action execution in multi-step workflows.",
-  "hook": "\"immediately trigger email after account creation\" → procedural instructions for deterministic sequencing"
+  "hook": "\"immediately trigger email after account creation\" → procedural instructions for deterministic sequencing",
+  "review": true,
+  "reviewNote": "Judgment call — sources disagree on this answer; see explanation."
  },
  {
   "id": 283,
