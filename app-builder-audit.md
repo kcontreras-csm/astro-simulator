@@ -48,6 +48,6 @@ Keys were taken **exactly as set in the HTML** (`correct` index). None were chan
 
 `tools/parse_app_builder_pdf.py` and the `Plat-Admn-202 2.pdf` snapshot remain for reference but no longer feed the bank.
 
-## Flagged questions in the app
+## Contested keys in the app
 
-Questions on the flagged list carry `"review": true` and a short `"reviewNote"` in the bank JSON. The app shows them with a ⚑ **Flagged** badge, prints the note above the explanation, and collects all of them in a virtual **⚑ Flagged Keys** tab and dashboard row (they still count in their real category for scoring).
+Questions on the flagged list carry `"review": true` and a short `"reviewNote"` in the bank JSON. The app marks them with a **⚠ Key contested** badge on the card and prints the note above the explanation. (The **🚩 Flagged** tab is separate — it lists the questions *you* flag with the 🚩 button, per exam.)

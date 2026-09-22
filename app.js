@@ -3013,14 +3013,34 @@ const state = {
 let TAB_CATEGORIES = [null, ...CATEGORY_LIST, null];
 let FULL_EXAM_TAB = TAB_CATEGORIES.length - 1;
 
-// Virtual category collecting every question whose answer key was flagged during the
-// bank audit (q.review === true). It gets its own tab and dashboard row but the
-// questions keep their real category for scoring.
-const REVIEW_CATEGORY = "\u2691 Flagged Keys";
+// Virtual "Flagged" category: every question the user has flagged with the 🚩 button
+// in the current exam. Present on every exam (flags are stored per exam); the
+// questions keep their real category for scoring and results.
+const FLAGGED_CATEGORY = "🚩 Flagged";
 function questionsInCategory(cat) {
-  if (cat === REVIEW_CATEGORY) return QUESTIONS.filter(q => q.review);
+  if (cat === FLAGGED_CATEGORY) return QUESTIONS.filter(q => state.flagged[q.id]);
   return QUESTIONS.filter(q => q.category === cat);
 }
+function flaggedTabIndex() { return TAB_CATEGORIES.indexOf(FLAGGED_CATEGORY); }
+
+// Re-render the Flagged tab, its tab badge, progress line, and dashboard row after
+// a flag changes, so the list is always current.
+function refreshFlaggedTab() {
+  const i = flaggedTabIndex();
+  if (i < 0) return;
+  const qs = questionsInCategory(FLAGGED_CATEGORY);
+  renderQuizTab(i, FLAGGED_CATEGORY, qs);
+  restoreSubmittedState(i);
+  renderTabButtons();
+  updateTabProgress();
+  document.querySelectorAll(`[data-topic-count="${FLAGGED_CATEGORY}"]`).forEach(el => { el.textContent = qs.length; });
+  document.querySelectorAll(`[data-topic-text="${FLAGGED_CATEGORY}"]`).forEach(el => { el.textContent = `${qs.length} flagged question${qs.length === 1 ? "" : "s"}`; });
+}
+
+window.showFlaggedTab = function() {
+  const i = flaggedTabIndex();
+  if (i >= 0) { setActiveTab(i); window.scrollTo({ top: 0 }); }
+};
 
 // Point the app at a given exam config + question bank and rebuild the tab model.
 function deriveCategories(bank) {
@@ -3035,7 +3055,7 @@ function configureExam(cfg, bank) {
   CATEGORY_LIST = (cfg.categories && cfg.categories.length)
     ? cfg.categories.slice()
     : deriveCategories(QUESTIONS);
-  if (QUESTIONS.some(q => q.review)) CATEGORY_LIST.push(REVIEW_CATEGORY);
+  CATEGORY_LIST.push(FLAGGED_CATEGORY);
   TAB_CATEGORIES = [null, ...CATEGORY_LIST, null];
   FULL_EXAM_TAB = TAB_CATEGORIES.length - 1;
   state.timerSeconds = exam.examMinutes * 60;
@@ -3169,6 +3189,7 @@ window.toggleFlag = function(qid, ev) {
   saveFlags();
   syncFlag(qid);
   updateFlagStatus();
+  refreshFlaggedTab();
 };
 
 // Reflect a flag's state on every rendered copy of that question (a question can
@@ -3190,6 +3211,7 @@ function updateFlagStatus() {
   if (!el) return;
   const n = Object.keys(state.flagged).length;
   el.textContent = n ? `🚩 ${n} flagged` : "";
+  el.title = n ? "Open the Flagged tab" : "";
   el.classList.toggle("has-flags", n > 0);
 }
 
@@ -3202,6 +3224,7 @@ window.clearFlags = function() {
   saveFlags();
   ids.forEach(id => syncFlag(id));
   updateFlagStatus();
+  refreshFlaggedTab();
 };
 
 function flagButtonHTML(qid) {
@@ -3972,9 +3995,9 @@ function renderDashboard() {
               <input type="checkbox" id="chk-${t.name.replace(/\W/g,'-')}">
               <div>
                 <strong>${t.name}</strong><br>
-                <span style="font-size:.78rem;color:var(--text-muted)">${t.count} practice questions</span>
+                <span style="font-size:.78rem;color:var(--text-muted)" data-topic-text="${t.name}">${t.name === FLAGGED_CATEGORY ? `${t.count} flagged question${t.count === 1 ? "" : "s"}` : `${t.count} practice questions`}</span>
               </div>
-              <span class="topic-weight">${t.count}</span>
+              <span class="topic-weight" data-topic-count="${t.name}">${t.count}</span>
             </li>
           `).join("")}
         </ul>
@@ -4080,18 +4103,24 @@ function renderQuizTab(tabIndex, title, questions) {
   const pane = document.getElementById(`tab-${tabIndex}`);
   if (!pane) return;
 
-  const shuffleBtn = `<button class="btn-shuffle" onclick="shuffleTab(${tabIndex})" title="Shuffle the order of questions and of each question's answers">🔀 Shuffle</button>`;
+  const isFlaggedTab = title === FLAGGED_CATEGORY;
+  const shuffleBtn = questions.length > 1 ? `<button class="btn-shuffle" onclick="shuffleTab(${tabIndex})" title="Shuffle the order of questions and of each question's answers">🔀 Shuffle</button>` : "";
+  const clearBtn = isFlaggedTab && questions.length ? `<button class="btn-shuffle" onclick="clearFlags()" title="Remove every flag in this exam">🗑️ Clear flags</button>` : "";
+  const emptyNote = isFlaggedTab
+    ? `<p class="empty-note">No flagged questions yet. Click 🚩 on any question in this exam and it will show up here.</p>`
+    : `<p class="empty-note">No questions in this section.</p>`;
 
   pane.innerHTML = `
     <div class="section-header">
       <h2>${title}</h2>
       <div class="section-header-actions">
+        ${clearBtn}
         ${shuffleBtn}
         <span class="section-progress" id="progress-${tabIndex}">0 / ${questions.length} Answered</span>
       </div>
     </div>
     <div class="quiz-container" id="quiz-${tabIndex}">
-      ${questions.map((q, i) => renderQuestionCard(q, i + 1)).join("")}
+      ${questions.length ? questions.map((q, i) => renderQuestionCard(q, i + 1)).join("") : emptyNote}
     </div>
   `;
 }
@@ -4103,10 +4132,13 @@ function renderQuestionCard(q, num) {
       <div class="question-header">
         <div class="question-number ${isMulti ? 'multi-select' : ''}">Q${num}</div>
         <div class="question-body">
+          <div class="question-meta">
+            <span class="q-cat">${q.category}</span>
+            ${q.review ? `<span class="review-badge" title="This answer key was contested during the bank audit — see the note in the explanation">⚠ Key contested</span>` : ''}
+          </div>
           <div class="question-text">
             ${q.text}
             ${isMulti ? `<span class="multi-badge">Select ${q.answer.length}</span>` : ''}
-            ${q.review ? `<span class="review-badge" title="Answer key flagged during audit">\u2691 Flagged</span>` : ''}
           </div>
         </div>
         ${flagButtonHTML(q.id)}
@@ -4125,7 +4157,7 @@ function renderQuestionCard(q, num) {
       </div>
       <div class="explanation-panel" id="explanation-${q.id}">
         ${q.hook ? `<div class="answer-hook"><span class="hook-key">🔑 Key</span><span class="hook-text">${q.hook}</span></div>` : ''}
-        ${q.review ? `<div class="review-note"><span class="review-key">\u2691 Flagged</span><span class="review-text">${q.reviewNote || 'Answer key flagged during the bank audit.'}</span></div>` : ''}
+        ${q.review ? `<div class="review-note"><span class="review-key">⚠ Key contested</span><span class="review-text">${q.reviewNote || 'Answer key flagged during the bank audit.'}</span></div>` : ''}
         <h4>💡 Explanation</h4>
         <p>${q.explanation}</p>
       </div>
@@ -4362,7 +4394,7 @@ function submitExam() {
   let totalCorrect = 0;
   const sectionResults = {};
 
-  CATEGORY_LIST.filter(cat => cat !== REVIEW_CATEGORY).forEach(cat => {
+  CATEGORY_LIST.filter(cat => cat !== FLAGGED_CATEGORY).forEach(cat => {
     sectionResults[cat] = { total: 0, correct: 0 };
   });
 

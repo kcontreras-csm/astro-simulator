@@ -634,6 +634,25 @@ body {
   vertical-align: middle;
 }
 
+/* Category label shown on every question card */
+.question-meta {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin-bottom: 6px;
+}
+.q-cat {
+  display: inline-block;
+  font-size: .68rem; font-weight: 700; letter-spacing: .02em; text-transform: uppercase;
+  color: var(--sf-green-dark);
+  background: var(--sf-green-wash);
+  padding: 2px 8px; border-radius: 50px;
+}
+:root[data-appearance="dark"] .q-cat { color: var(--sf-green-light); background: rgba(255,255,255,.06); }
+
+.empty-note {
+  padding: 28px 24px; text-align: center;
+  color: var(--text-muted); font-size: .9rem; line-height: 1.6;
+}
+
 /* Audit review flag — question whose answer key was flagged during the bank audit */
 .review-badge {
   display: inline-block;
@@ -643,7 +662,6 @@ body {
   font-weight: 700;
   padding: 2px 8px;
   border-radius: 50px;
-  margin-left: 8px;
   vertical-align: middle;
 }
 
@@ -1268,7 +1286,7 @@ body {
   transition: var(--transition-base);
 }
 .flag-status:empty { display: none; }
-.flag-status:hover { background: var(--color-incorrect); border-color: var(--color-incorrect); }
+.flag-status:hover { background: var(--color-warning); border-color: var(--color-warning); }
 
 /* ============================================================
    RAPID FIRE launch button + overlay
