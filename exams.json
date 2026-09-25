@@ -78,7 +78,7 @@
     "passingScore": 62,
     "examMinutes": 105,
     "bank": "sales-consultant.json",
-    "count": 190,
+    "count": 390,
     "categories": [
       "Implementation Strategies",
       "Consulting Practices",
@@ -87,7 +87,8 @@
       "Lead & Campaign Management",
       "Account & Contact Management",
       "Opportunity Management",
-      "Data, Reports & Dashboards"
+      "Data, Reports & Dashboards",
+      "Agentforce & AI"
     ]
   }
 ]

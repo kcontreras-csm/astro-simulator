@@ -647,6 +647,13 @@ body {
   padding: 2px 8px; border-radius: 50px;
 }
 :root[data-appearance="dark"] .q-cat { color: var(--sf-green-light); background: rgba(255,255,255,.06); }
+.q-src {
+  display: inline-block;
+  font-size: .68rem; font-weight: 700; letter-spacing: .02em; text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border-light);
+  padding: 1px 8px; border-radius: 50px;
+}
 
 .empty-note {
   padding: 28px 24px; text-align: center;

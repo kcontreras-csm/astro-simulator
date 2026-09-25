@@ -98,7 +98,7 @@ const EXAM_REGISTRY = [
     passingScore: 62,
     examMinutes: 105,
     bank: "sales-consultant.json",
-    count: 190,
+    count: 390,
     categories: [
       "Implementation Strategies",
       "Consulting Practices",
@@ -107,7 +107,8 @@ const EXAM_REGISTRY = [
       "Lead & Campaign Management",
       "Account & Contact Management",
       "Opportunity Management",
-      "Data, Reports & Dashboards"
+      "Data, Reports & Dashboards",
+      "Agentforce & AI"
     ]
   },
 ];
@@ -4060,7 +4061,7 @@ function restoreSubmittedState(tabIndex) {
         card.querySelectorAll('.option-item').forEach(opt => {
           opt.classList.toggle('selected', userAnswers.includes(opt.dataset.letter));
         });
-        const btn = $(`#submit-${qid}`);
+        const btn = card.querySelector(`[id="submit-${qid}"]`);
         if (btn) btn.disabled = false;
       }
       return;
@@ -4078,12 +4079,12 @@ function restoreSubmittedState(tabIndex) {
         if (q.answer.includes(l)) opt.classList.add('correct');
         else if (userAnswers.includes(l)) opt.classList.add('incorrect');
       });
-      const btn = $(`#submit-${qid}`);
+      const btn = card.querySelector(`[id="submit-${qid}"]`);
       if (btn) btn.style.display = 'none';
-      const explanation = $(`#explanation-${qid}`);
+      const explanation = card.querySelector(`[id="explanation-${qid}"]`);
       if (explanation) explanation.classList.add('visible');
     } else {
-      const btn = $(`#submit-${qid}`);
+      const btn = card.querySelector(`[id="submit-${qid}"]`);
       if (btn) {
         btn.textContent = '✓ Saved';
         btn.disabled = true;
@@ -4134,6 +4135,7 @@ function renderQuestionCard(q, num) {
         <div class="question-body">
           <div class="question-meta">
             <span class="q-cat">${q.category}</span>
+            ${q.source ? `<span class="q-src" title="${q.sourceRef || q.source}">${q.source}</span>` : ''}
             ${q.review ? `<span class="review-badge" title="This answer key was contested during the bank audit — see the note in the explanation">⚠ Key contested</span>` : ''}
           </div>
           <div class="question-text">
@@ -4191,16 +4193,13 @@ function selectOption(qid, letter, isMulti) {
     state.answers[qid] = [letter];
   }
 
-  // Update UI
-  const options = $$(`#options-${qid} .option-item`);
-  options.forEach(opt => {
+  // Update UI — a question can be rendered in several tabs (its category, Full Exam,
+  // Flagged), so update every copy, not just the first element with that id.
+  $$(`[id="options-${qid}"] .option-item`).forEach(opt => {
     const l = opt.dataset.letter;
     opt.classList.toggle("selected", state.answers[qid].includes(l));
   });
-
-  // Enable submit button
-  const btn = $(`#submit-${qid}`);
-  if (btn) btn.disabled = state.answers[qid].length === 0;
+  $$(`[id="submit-${qid}"]`).forEach(btn => { btn.disabled = state.answers[qid].length === 0; });
 
   saveSession();
 }
@@ -4215,13 +4214,12 @@ function submitAnswer(qid) {
   if (state.mode === "exam") {
     // In exam mode, just mark as submitted silently
     state.submitted[qid] = true;
-    const btn = $(`#submit-${qid}`);
-    if (btn) {
+    $$(`[id="submit-${qid}"]`).forEach(btn => {
       btn.textContent = "✓ Saved";
       btn.disabled = true;
       btn.classList.remove("primary");
       btn.classList.add("secondary");
-    }
+    });
     updateScoreMatrix();
     updateTabProgress();
     return;
@@ -4231,12 +4229,10 @@ function submitAnswer(qid) {
   state.submitted[qid] = true;
 
   const isCorrect = arraysEqual(userAnswers.sort(), q.answer.sort());
-  const card = $(`#qcard-${qid}`);
-  card.classList.add(isCorrect ? "answered-correct" : "answered-incorrect");
+  $$(`[id="qcard-${qid}"]`).forEach(card => card.classList.add(isCorrect ? "answered-correct" : "answered-incorrect"));
 
-  // Style options
-  const options = $$(`#options-${qid} .option-item`);
-  options.forEach(opt => {
+  // Style options (every rendered copy of the card)
+  $$(`[id="options-${qid}"] .option-item`).forEach(opt => {
     const l = opt.dataset.letter;
     opt.classList.add("disabled");
     opt.classList.remove("selected");
@@ -4248,12 +4244,9 @@ function submitAnswer(qid) {
     }
   });
 
-  // Hide submit button, show explanation
-  const btn = $(`#submit-${qid}`);
-  if (btn) btn.style.display = "none";
-
-  const explanation = $(`#explanation-${qid}`);
-  if (explanation) explanation.classList.add("visible");
+  // Hide submit button, show explanation — on every copy
+  $$(`[id="submit-${qid}"]`).forEach(btn => { btn.style.display = "none"; });
+  $$(`[id="explanation-${qid}"]`).forEach(ex => ex.classList.add("visible"));
 
   updateScoreMatrix();
   updateTabProgress();
@@ -4489,11 +4482,9 @@ function closeResults() {
   QUESTIONS.forEach(q => {
     const userAnswers = state.answers[q.id] || [];
     const isCorrect = arraysEqual(userAnswers.sort(), q.answer.sort());
-    const card = $(`#qcard-${q.id}`);
-    if (card) card.classList.add(isCorrect ? "answered-correct" : "answered-incorrect");
+    $$(`[id="qcard-${q.id}"]`).forEach(card => card.classList.add(isCorrect ? "answered-correct" : "answered-incorrect"));
 
-    const options = $$(`#options-${q.id} .option-item`);
-    options.forEach(opt => {
+    $$(`[id="options-${q.id}"] .option-item`).forEach(opt => {
       const l = opt.dataset.letter;
       opt.classList.add("disabled");
       opt.classList.remove("selected");
@@ -4501,11 +4492,8 @@ function closeResults() {
       else if (userAnswers.includes(l)) opt.classList.add("incorrect");
     });
 
-    const explanation = $(`#explanation-${q.id}`);
-    if (explanation) explanation.classList.add("visible");
-
-    const btn = $(`#submit-${q.id}`);
-    if (btn) btn.style.display = "none";
+    $$(`[id="explanation-${q.id}"]`).forEach(ex => ex.classList.add("visible"));
+    $$(`[id="submit-${q.id}"]`).forEach(btn => { btn.style.display = "none"; });
   });
 }
 
