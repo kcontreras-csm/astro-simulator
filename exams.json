@@ -69,5 +69,26 @@
       "Trust Layer & Security",
       "Setup & Integration"
     ]
+  },
+  {
+    "id": "sales-consultant",
+    "name": "Sales Cloud Consultant",
+    "code": "SALES-CON-201",
+    "subtitle": "Salesforce Certified · SALES-CON-201 · Practice Questions",
+    "passingScore": 62,
+    "examMinutes": 105,
+    "bank": "sales-consultant.json",
+    "count": 119,
+    "categories": [
+      "Implementation Strategies",
+      "Consulting Practices",
+      "Sales Life Cycle & Forecasting",
+      "Product Knowledge & Integration",
+      "Lead & Campaign Management",
+      "Account & Contact Management",
+      "Opportunity Management",
+      "Data, Reports & Dashboards",
+      "Agentforce & AI"
+    ]
   }
 ]

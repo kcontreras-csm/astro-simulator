@@ -1,0 +1,3085 @@
+[
+ {
+  "id": 1,
+  "category": "Opportunity Management",
+  "text": "A sales operations manager wants to help their team prioritize deals more effectively by identifying opportunities likely to close. They need a solution that provides explanations to aid rep decision-making. What feature should the Sales Cloud Consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Collaborative Forecasting"
+   },
+   {
+    "letter": "B",
+    "text": "Einstein Opportunity Scoring"
+   },
+   {
+    "letter": "C",
+    "text": "In-App Guidance"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Einstein Opportunity Scoring gives every opportunity a score for how likely it is to close and lists the positive and negative factors behind it, so reps can see why a deal ranks high or low. Collaborative Forecasting projects revenue rather than ranking deals, and In-App Guidance only displays prompts.",
+  "sourceRef": "set1.json Q1"
+ },
+ {
+  "id": 2,
+  "category": "Product Knowledge & Integration",
+  "text": "A consultant is preparing training to help end users get up to speed on Einstein Activity Capture. What should the consultant include in the training information?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Synced activities display in the Activities related list."
+   },
+   {
+    "letter": "B",
+    "text": "Users can share individual emails or make them private."
+   },
+   {
+    "letter": "C",
+    "text": "Corporate emails are always included as synced activities."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "The correct answer is that users can share individual emails or make them private. When training users on Einstein Activity Capture, it's important to cover not just what it does, but how they can control it. The ability to manage the privacy of their synced activities is a key feature that addresses potential user concerns and should be highlighted.",
+  "sourceRef": "set1.json Q2",
+  "prevId": 227
+ },
+ {
+  "id": 3,
+  "category": "Product Knowledge & Integration",
+  "text": "Cloud Kicks sales reps want to see all of the details on their current opportunities with a minimal amount of navigation or clicks to cycle through them. Which functionality should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Create a dashboard with reports on My Opportunities."
+   },
+   {
+    "letter": "B",
+    "text": "Select the Split View option from the My Opportunities list view."
+   },
+   {
+    "letter": "C",
+    "text": "Develop a new Sales Console app including opportunities."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Split View on a list view shows the list on the left and the selected record's full detail on the right, so reps can cycle through opportunities with a single click each. A console app or dashboard is far heavier for the same need.",
+  "sourceRef": "set1.json Q3",
+  "prevId": 7
+ },
+ {
+  "id": 4,
+  "category": "Consulting Practices",
+  "text": "Cloud Kicks uses an ERP system as its system of record for customer data. When an account has its first Closed Won opportunity, the ERP system should be updated immediately from the account and opportunity records. Who should the Sales Cloud Consultant work with?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Integration architect"
+   },
+   {
+    "letter": "B",
+    "text": "Project manager"
+   },
+   {
+    "letter": "C",
+    "text": "ERP admin"
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Exam key: the ERP admin, who owns the system of record and knows how it accepts customer and opportunity updates. Note: designing an immediate update from Salesforce to the ERP is integration design, and the previous bank's version of this question keyed the integration architect; in practice both roles are involved.",
+  "sourceRef": "set1.json Q4",
+  "review": true,
+  "reviewNote": "Key taken from the sales sets; the previous bank's variant (Q249) keyed \"Integration architect\"."
+ },
+ {
+  "id": 5,
+  "category": "Product Knowledge & Integration",
+  "text": "Cloud Kicks is expanding to international markets. Sales reps are unable to find specific Products in the international Price Book. What should a consultant do to resolve this issue?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Add the Products to a product family."
+   },
+   {
+    "letter": "B",
+    "text": "Share the Products with sales reps."
+   },
+   {
+    "letter": "C",
+    "text": "Add the Products to the Price Book."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "A product can only be added to an opportunity if it has an active entry in the opportunity's price book, so the missing products need entries in the international Price Book. Product families only group products for reporting and forecasting, and product records aren't shared to reps.",
+  "sourceRef": "set1.json Q5"
+ },
+ {
+  "id": 6,
+  "category": "Implementation Strategies",
+  "text": "Cloud Kicks has finished its configuration, and business users are ready to test the new feature. Which step is this in a typical project lifecycle?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Deployment"
+   },
+   {
+    "letter": "B",
+    "text": "User Acceptance Testing (UAT)"
+   },
+   {
+    "letter": "C",
+    "text": "Go-Live"
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key as printed: Deployment. Note: business users testing newly configured functionality before release is User Acceptance Testing (UAT), which comes before deployment and go-live; the previous bank keyed UAT for this question.",
+  "sourceRef": "set1.json Q6",
+  "review": true,
+  "reviewNote": "Key appears incorrect: the scenario describes User Acceptance Testing (UAT). The previous bank's variant (Q251) keyed UAT."
+ },
+ {
+  "id": 7,
+  "category": "Product Knowledge & Integration",
+  "text": "Cloud Kicks has implemented dated exchange rates by using Advanced Currency Management. How is the converted currency amount calculation on opportunities determined?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "The close date regardless of the opportunity stage"
+   },
+   {
+    "letter": "B",
+    "text": "The date the opportunity stage is closed regardless of the close date"
+   },
+   {
+    "letter": "C",
+    "text": "The close date only when the opportunity stage is closed"
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "With dated exchange rates, an opportunity's converted amount is always calculated using the rate in effect on its Close Date, regardless of stage. Stage changes don't alter which rate is used.",
+  "sourceRef": "set1.json Q7",
+  "prevId": 142
+ },
+ {
+  "id": 8,
+  "category": "Sales Life Cycle & Forecasting",
+  "text": "Cloud Kicks wants to assign territories in bulk to Opportunities. What should the consultant do?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Schedule auto-assignment rules in the territory model."
+   },
+   {
+    "letter": "B",
+    "text": "Update Opportunity sales team with territory assignments."
+   },
+   {
+    "letter": "C",
+    "text": "Run the filter-based Opportunity territory assignment."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: schedule the auto-assignment rules in the territory model. Note: Salesforce documentation assigns territories to opportunities in bulk with filter-based opportunity territory assignment, which runs an Apex filter class against opportunities; territory assignment rules assign accounts, not opportunities. The previous bank keyed the filter-based option.",
+  "sourceRef": "set1.json Q8",
+  "prevId": 168,
+  "review": true,
+  "reviewNote": "Key taken from the sales sets; the previous bank (Q168) keyed \"Run the filter-based Opportunity territory assignment\", which matches Salesforce documentation."
+ },
+ {
+  "id": 9,
+  "category": "Product Knowledge & Integration",
+  "text": "Users report the global search is returning too many results when searching for contacts. Users have the correct permissions and record access. What should a consultant recommend to yield better search results?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Add the \"in:\" command next to the contact's full name in the results list."
+   },
+   {
+    "letter": "B",
+    "text": "Add the company name next to the contact's full name in the results list."
+   },
+   {
+    "letter": "C",
+    "text": "Use the quotation marks operator around the contact's first and last name."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Wrapping the contact's first and last name in quotation marks makes global search treat them as an exact phrase, which cuts the results down to matching contacts. The other two options change what is shown in the results list, not what the search matches.",
+  "sourceRef": "set1.json Q9"
+ },
+ {
+  "id": 10,
+  "category": "Data, Reports & Dashboards",
+  "text": "Universal Containers has an Account Hierarchy (parent = HQ, child = franchises). The VP of sales believes many franchises are missing from the org because reps are unaware of them. What should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Download the Data Quality Analysis Dashboard from AppExchange."
+   },
+   {
+    "letter": "B",
+    "text": "Implement a data enrichment package from AppExchange."
+   },
+   {
+    "letter": "C",
+    "text": "Utilize Sales Engagement to add an External ID to the data."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "A data enrichment package from AppExchange matches accounts to third-party company data and can add missing subsidiaries and locations, filling in the franchise records reps don't know about. Sales Engagement doesn't add external IDs, and a data quality dashboard only measures gaps.",
+  "sourceRef": "set1.json Q10",
+  "prevId": 170
+ },
+ {
+  "id": 11,
+  "category": "Implementation Strategies",
+  "text": "Cloud Kicks notices that sales users are inconsistently entering opportunities. Which next step should the consultant recommend to address the poor adoption?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Schedule the Sales Adoption Dashboard from the Adoption & Data Quality Dashboard Pack."
+   },
+   {
+    "letter": "B",
+    "text": "Convert text fields to required picklist fields to ensure data is always entered."
+   },
+   {
+    "letter": "C",
+    "text": "Use surveys to gather feedback from users on how to improve their experience."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Scheduling the Sales Adoption Dashboard from the Adoption & Data Quality dashboard pack shows which teams and users are and aren't entering opportunities consistently, so the consultant can pinpoint where adoption breaks down before changing anything. Forcing required picklists treats the symptom and adds friction, and surveys are a follow-up once the data shows where the gaps are.",
+  "sourceRef": "set1.json Q11"
+ },
+ {
+  "id": 12,
+  "category": "Product Knowledge & Integration",
+  "text": "The admin at Universal Containers is attempting to retire a heavily used Product that is being replaced by a newer version. What should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Edit the Product record and uncheck the Active field."
+   },
+   {
+    "letter": "B",
+    "text": "Remove the related product from all Opportunities and quotes."
+   },
+   {
+    "letter": "C",
+    "text": "Create a flow to delete the Product from the price book."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Unchecking Active on the Product record retires it: it can no longer be added to new opportunities, quotes or orders, while every existing line item and its history stays intact. A product used on opportunities can't simply be deleted, and stripping it from existing deals or deleting its price book entries would lose sales history.",
+  "sourceRef": "set1.json Q12"
+ },
+ {
+  "id": 13,
+  "category": "Agentforce & AI",
+  "text": "Universal Containers tests an Einstein Generative AI feature for personalized emails. Sometimes the draft contains placeholders for attributes that could have been derived from the contact record. What is the most likely explanation?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "The user's locale language is not supported by Prompt Builder."
+   },
+   {
+    "letter": "B",
+    "text": "The user does not have Einstein Sales Emails permission assigned."
+   },
+   {
+    "letter": "C",
+    "text": "The user does not have permission to access the fields."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Einstein's generative sales emails can only use CRM data the running user is allowed to read; when field-level security hides a field, the draft has nothing to merge and leaves a placeholder. A missing Sales Emails permission would block drafting altogether, and an unsupported locale would affect the whole email rather than individual attributes.",
+  "sourceRef": "set1.json Q13"
+ },
+ {
+  "id": 14,
+  "category": "Consulting Practices",
+  "text": "Cloud Kicks is kicking off its Sales Cloud implementation. The consultant wants to dive deeper into CK's process and pain points. Which approach should the consultant use to learn about and empathize with the customer?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Create flowcharts."
+   },
+   {
+    "letter": "B",
+    "text": "Interview stakeholders."
+   },
+   {
+    "letter": "C",
+    "text": "Define personas."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "The correct answer is to interview stakeholders. To understand and empathize with a customer, you must engage with them directly. Stakeholder interviews are a foundational discovery technique. They provide the rich, qualitative data needed to understand the 'why' behind processes, the real pain points, and the goals of the people involved, which is the essence of empathy in consulting.",
+  "sourceRef": "set1.json Q14",
+  "prevId": 221
+ },
+ {
+  "id": 15,
+  "category": "Data, Reports & Dashboards",
+  "text": "Cloud Kicks is merging data of an acquired company: private data model, millions of records, users merged into the existing role hierarchy. What should the consultant advise when performing the data migration?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Defer sharing calculations to avoid timeouts."
+   },
+   {
+    "letter": "B",
+    "text": "Limit the batch size to 200 rows of data to avoid row locks."
+   },
+   {
+    "letter": "C",
+    "text": "Use the Data Import Wizard."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Deferring sharing calculations lets the admin load millions of records into a private model and merge users into the role hierarchy without a sharing recalculation on every batch; sharing is recalculated once at the end, avoiding timeouts and lock contention. Small batch sizes don't remove the recalculation, and the Data Import Wizard is limited to 50,000 records.",
+  "sourceRef": "set1.json Q15"
+ },
+ {
+  "id": 16,
+  "category": "Lead & Campaign Management",
+  "text": "Sales management wants to use Campaign Influence with Opportunities to attribute a percentage of success to influential campaigns. Which feature allows revenue share with standard and custom attribution models?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Use Customizable Campaign Influence for reporting."
+   },
+   {
+    "letter": "B",
+    "text": "Create a formula field to track Campaign Influence."
+   },
+   {
+    "letter": "C",
+    "text": "Create a reporting snapshot for Campaign Influence."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Customizable Campaign Influence lets you define attribution models (standard and custom) that distribute revenue share across the campaigns that influenced an opportunity. Snapshots and formula fields can't perform attribution.",
+  "sourceRef": "set2.json Q16",
+  "prevId": 171
+ },
+ {
+  "id": 17,
+  "category": "Implementation Strategies",
+  "text": "Cloud Kicks recently launched Sales Cloud. Admins need to know the pages that are most viewed. What should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "View the built-in metrics included in the Lightning Usage App."
+   },
+   {
+    "letter": "B",
+    "text": "Install the Salesforce Adoption Dashboards package from AppExchange."
+   },
+   {
+    "letter": "C",
+    "text": "Create a custom report based on Lightning Exit By Page Metrics."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "The Lightning Usage App's built-in metrics include page views, so admins can see the most viewed pages without installing or building anything. The Adoption Dashboards package and a custom report on Lightning Exit by Page metrics take extra setup, and exit metrics show where users leave rather than which pages they view most.",
+  "sourceRef": "set2.json Q17"
+ },
+ {
+  "id": 18,
+  "category": "Data, Reports & Dashboards",
+  "text": "Cloud Kicks is migrating from its current CRM to Sales Cloud in phases. Customer and pipeline data resides in a legacy back-end application. Which approach should the consultant use for the data migration?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Migrate all Accounts, then Contacts, and then Opportunities."
+   },
+   {
+    "letter": "B",
+    "text": "Migrate all Opportunities, and then associate Accounts and Contacts."
+   },
+   {
+    "letter": "C",
+    "text": "Migrate all Contacts, then Opportunities, and then Accounts."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Load parents before children: Accounts first, then Contacts (which look up to Accounts), then Opportunities (which reference Accounts and their contacts). Loading children first leaves lookups unresolved and forces a second pass to associate the records.",
+  "sourceRef": "set2.json Q18"
+ },
+ {
+  "id": 19,
+  "category": "Account & Contact Management",
+  "text": "Sometimes Universal Containers reps need to create contacts without accounts. What should the consultant take into consideration?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Contacts are private and only the owner and admin can view them."
+   },
+   {
+    "letter": "B",
+    "text": "Contacts are private and shared through the role hierarchy."
+   },
+   {
+    "letter": "C",
+    "text": "Contacts are private and shared through sharing rules."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "A contact with no account is a private contact: it's visible only to its owner and to administrators, and it isn't shared through the role hierarchy or sharing rules. Business processes that create such contacts should account for that limited visibility.",
+  "sourceRef": "set2.json Q19",
+  "prevId": 71
+ },
+ {
+  "id": 20,
+  "category": "Implementation Strategies",
+  "text": "The admin plans to deploy new functionality outside business hours. Where should the admin check for scheduled system maintenance on the org?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Salesforce Trust"
+   },
+   {
+    "letter": "B",
+    "text": "Release Notes"
+   },
+   {
+    "letter": "C",
+    "text": "System Overview"
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Salesforce Trust (trust.salesforce.com) publishes each instance's scheduled maintenance windows, upgrades and incidents, so it's where the admin confirms the org won't be under maintenance during the deployment. Release Notes describe features, and System Overview shows org usage and limits.",
+  "sourceRef": "set2.json Q20"
+ },
+ {
+  "id": 21,
+  "category": "Implementation Strategies",
+  "text": "The Cloud Kicks admin wants to update an existing sales process. Which best practice should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Build in a Developer Edition org."
+   },
+   {
+    "letter": "B",
+    "text": "Build in a production org."
+   },
+   {
+    "letter": "C",
+    "text": "Build in a Developer sandbox."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Changes to an existing sales process are built and tested in a Developer sandbox, which carries a copy of production's metadata, and then deployed. Building in production risks disrupting live users, and a Developer Edition org has none of the org's existing configuration.",
+  "sourceRef": "set2.json Q21"
+ },
+ {
+  "id": 22,
+  "category": "Agentforce & AI",
+  "text": "How should a company ensure inclusivity when training an AI model?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Exclude outlier data points to improve the accuracy of the AI model."
+   },
+   {
+    "letter": "B",
+    "text": "Use datasets that represent the diversity of the intended user base."
+   },
+   {
+    "letter": "C",
+    "text": "Focus on large datasets to ensure the most comprehensive coverage."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Inclusive AI starts with the training data: datasets that represent the diversity of the people the model will serve reduce the chance it underperforms or behaves unfairly for some groups. Excluding outliers can remove exactly the under-represented groups, and a large dataset isn't necessarily a representative one.",
+  "sourceRef": "set2.json Q22"
+ },
+ {
+  "id": 23,
+  "category": "Opportunity Management",
+  "text": "At Universal Containers, support reps involved in a deal should receive a credit of 15% of the revenue. What should the consultant consider when designing a revenue sharing solution?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Create an Opportunity with Opportunity Teams report, use a summary formula field to assign 15%, and add to the report."
+   },
+   {
+    "letter": "B",
+    "text": "Enable Opportunity Splits, set up the split, and add the Opportunity Split related list to the desired layout."
+   },
+   {
+    "letter": "C",
+    "text": "Create a formula field on the Opportunity Team member to calculate a 15% credit and add to the related list."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: build an Opportunities with Opportunity Teams report and use a summary formula to calculate the support reps' 15%. Note: Salesforce's built-in way to credit supporting team members is Opportunity Splits with an overlay split type, which doesn't have to total 100%; a report formula only displays a number and doesn't record the credit.",
+  "sourceRef": "set2.json Q23",
+  "review": true,
+  "reviewNote": "Contested: Opportunity Splits (overlay split) is the documented feature for crediting supporting team members."
+ },
+ {
+  "id": 24,
+  "category": "Product Knowledge & Integration",
+  "text": "Universal Containers wants to help sales reps handle phone calls with prospective customers more efficiently. Which tool should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Omni-Channel"
+   },
+   {
+    "letter": "B",
+    "text": "Activity Capture"
+   },
+   {
+    "letter": "C",
+    "text": "Sales Dialer"
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Sales Dialer lets reps make and log calls from Salesforce with click-to-dial, call notes and voicemail drop, which makes calling prospects faster and keeps every call recorded. Omni-Channel routes service work to agents, and Activity Capture syncs email and calendar data, not calls.",
+  "sourceRef": "set2.json Q24"
+ },
+ {
+  "id": 25,
+  "category": "Data, Reports & Dashboards",
+  "text": "A decision resulted in 290,000 contacts under a single account, distributed across multiple owners, causing performance issues that require rapid remediation. What should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Assign all contacts to a single owner."
+   },
+   {
+    "letter": "B",
+    "text": "Update account sharing rule for the account to use a public group."
+   },
+   {
+    "letter": "C",
+    "text": "Create a plan to split the 290,000 contacts across at least 30 accounts."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Exam key: update the account sharing rule to use a public group. Note: 290,000 contacts under one account is account data skew, which causes record locking and slow sharing recalculation. Salesforce's guidance is to keep each account under 10,000 child records by spreading them across more accounts (290,000 ÷ 30 is just under 10,000, hence \"at least 30 accounts\"). The previous bank's variant keyed redistributing the contacts.",
+  "sourceRef": "set2.json Q25",
+  "review": true,
+  "reviewNote": "Key appears incorrect: Salesforce's data-skew guidance points to splitting the contacts across ~30 accounts (under 10,000 each). The previous bank's variant (Q269) keyed redistributing the contacts."
+ },
+ {
+  "id": 26,
+  "category": "Data, Reports & Dashboards",
+  "text": "Cloud Kicks has configured Account Teams and is ready to go live. How should the consultant migrate the Account Team Members records to production?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Migrate them via Data Loader."
+   },
+   {
+    "letter": "B",
+    "text": "Distribute them with packages."
+   },
+   {
+    "letter": "C",
+    "text": "Deploy them with change sets."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Account Team Member records are data, not metadata, so they are loaded into production with Data Loader. Change sets and packages move configuration only.",
+  "sourceRef": "set2.json Q26",
+  "prevId": 51
+ },
+ {
+  "id": 27,
+  "category": "Account & Contact Management",
+  "text": "Cloud Kicks has 300,000 accounts and 16 million invoices in a custom object (master-detail to Account). Each account record takes a long time to display. What should the consultant do?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Move the invoice related list to a separate tab on the record page and communicate the change to users."
+   },
+   {
+    "letter": "B",
+    "text": "Convert the invoice master-detail into a lookup relationship and tell the users it is a required field."
+   },
+   {
+    "letter": "C",
+    "text": "Enable indexing on all visible fields on the invoice related list and create a training plan for the users."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Exam key: index the fields shown in the invoice related list and train users. Note: the slow load comes from rendering a related list with millions of child rows; moving it to a separate tab on the record page defers that load until a user opens the tab, which is what the previous bank keyed. Indexing speeds up filtered queries but doesn't reduce what the page renders.",
+  "sourceRef": "set2.json Q27",
+  "prevId": 85,
+  "review": true,
+  "reviewNote": "Key taken from the sales sets; the previous bank (Q85) keyed \"Move the invoice related list to a separate tab\"."
+ },
+ {
+  "id": 28,
+  "category": "Agentforce & AI",
+  "text": "An account manager preparing for a customer call wants a snapshot of key data points from accounts, contacts, leads, and opportunities. Which feature provides this?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Work Summaries"
+   },
+   {
+    "letter": "B",
+    "text": "Sales Summaries"
+   },
+   {
+    "letter": "C",
+    "text": "Sales Insight Summary"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Einstein Sales Summaries generate a short summary of the key data on account, contact, lead and opportunity records, giving the account manager a quick snapshot before the call. Work Summaries is the Service Cloud feature that summarizes customer conversations, not sales records.",
+  "sourceRef": "set2.json Q28"
+ },
+ {
+  "id": 29,
+  "category": "Lead & Campaign Management",
+  "text": "A marketing manager wants reps to focus on high-quality leads by automatically ranking them based on conversion likelihood. Which feature supports this?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Campaign Influence"
+   },
+   {
+    "letter": "B",
+    "text": "Lead Assignment Rules"
+   },
+   {
+    "letter": "C",
+    "text": "Einstein Lead Scoring"
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Einstein Lead Scoring uses machine learning on the org's past conversions to score every lead by how likely it is to convert, so reps can sort and work the best leads first. Lead assignment rules route leads without ranking them, and Campaign Influence attributes revenue to campaigns.",
+  "sourceRef": "set2.json Q29"
+ },
+ {
+  "id": 30,
+  "category": "Data, Reports & Dashboards",
+  "text": "Sales managers need reports and dashboards with Opportunity Forecast by Product family with team Quotas. Which solution should a consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Create a custom report type with Forecasting Quotas and Forecasting Items."
+   },
+   {
+    "letter": "B",
+    "text": "Configure Quotas with a Product family report and add necessary fields."
+   },
+   {
+    "letter": "C",
+    "text": "Create a joined report with closed Opportunities, Forecasting Items, and Quotas."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Exam key: a joined report with blocks for closed opportunities, Forecasting Items and Quotas, which puts forecast amounts by product family next to team quotas. Forecasting Items and Forecasting Quotas are separate objects, so they're typically reported side by side in joined-report blocks. Note: the previous bank's version of this question keyed a custom report type with Forecasting Quotas and Forecasting Items.",
+  "sourceRef": "set2.json Q30",
+  "prevId": 61,
+  "review": true,
+  "reviewNote": "Key taken from the sales sets; the previous bank (Q61) keyed \"Create a custom report type with Forecasting Quotas and Forecasting Items\"."
+ },
+ {
+  "id": 31,
+  "category": "Product Knowledge & Integration",
+  "text": "Cloud Kicks has enabled Orders. The sales team wants a process to return or reduce the quantity of activated orders. What should a consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Create an order with a negative amount."
+   },
+   {
+    "letter": "B",
+    "text": "Enable Optional Price Books for Orders."
+   },
+   {
+    "letter": "C",
+    "text": "Enable Reduction Orders."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Reduction orders are the Salesforce Orders feature for returns and quantity reductions: once enabled, a reduction order is created against an activated order to reduce or return its products while the original order stays intact. Orders with negative amounts aren't supported, and optional price books are unrelated to returns.",
+  "sourceRef": "set2.json Q31"
+ },
+ {
+  "id": 32,
+  "category": "Lead & Campaign Management",
+  "text": "The Closed Won percentage is lower than expected. Qualified leads must have a budget of at least $10,000; the director wants reps to prioritize high-value prospects. Which action should a consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Map the Lead Budget field to an Opportunity Revenue field."
+   },
+   {
+    "letter": "B",
+    "text": "Use an approval process upon lead conversion when the budget is over $10,000."
+   },
+   {
+    "letter": "C",
+    "text": "Map the Lead Budget field to an Opportunity Amount field on the Opportunity."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Mapping the Lead Budget field to the Opportunity Amount on conversion carries the qualification value into the pipeline, letting reps sort and prioritize high-value opportunities immediately. An approval process adds friction, and there is no standard Opportunity Revenue field.",
+  "sourceRef": "set2.json Q32",
+  "prevId": 83
+ },
+ {
+  "id": 33,
+  "category": "Product Knowledge & Integration",
+  "text": "The consultant has implemented Einstein Lead Scoring. The VP of sales wants to see the effectiveness of this new functionality. What should the consultant do?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Create a custom report type for Sales Cloud Einstein records."
+   },
+   {
+    "letter": "B",
+    "text": "Add the Einstein prediction column to the forecast list view."
+   },
+   {
+    "letter": "C",
+    "text": "Add a standard dashboard for Sales Cloud Einstein."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Sales Cloud Einstein ships standard dashboards that show how lead scores correlate with conversion, which is the quickest way to demonstrate Einstein Lead Scoring's effectiveness. Custom report types and forecast list columns don't provide that analysis.",
+  "sourceRef": "set2.json Q33",
+  "prevId": 43
+ },
+ {
+  "id": 34,
+  "category": "Sales Life Cycle & Forecasting",
+  "text": "Universal Containers wants Collaborative Forecasts. There are team managers, regional managers, and country VPs in the role hierarchy; some regional manager roles include multiple users. How should the consultant configure the way opportunities roll up?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Simplify the role hierarchy by moving managers into the forecast hierarchy."
+   },
+   {
+    "letter": "B",
+    "text": "Assign the manager in the forecast hierarchy."
+   },
+   {
+    "letter": "C",
+    "text": "Update the role hierarchy so each manager role has one user."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: simplify the role hierarchy by moving managers into the forecast hierarchy. Note: Collaborative Forecasts handles roles with several users by having the admin choose the forecast manager for each role in the forecast hierarchy (Setup > Forecasts Hierarchy), with no change to the role hierarchy; that is the \"Assign the manager in the forecast hierarchy\" option.",
+  "sourceRef": "set2.json Q34",
+  "review": true,
+  "reviewNote": "Key appears incorrect: Salesforce designates one forecast manager per role in the forecast hierarchy. The previous bank's variant (Q278) keyed that option."
+ },
+ {
+  "id": 35,
+  "category": "Implementation Strategies",
+  "text": "Universal Containers is preparing organization-wide training for a highly customized Sales Cloud solution. What should the consultant do to ensure training is most effective?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Choose one training modality to simplify the user experience."
+   },
+   {
+    "letter": "B",
+    "text": "Provide user training based on relevant business scenarios."
+   },
+   {
+    "letter": "C",
+    "text": "Direct users to relevant Trailhead modules for self-paced learning."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Training built around the users' real business scenarios shows each role how the customized solution supports the work they actually do, which is what makes training stick for a heavily customized org. Generic Trailhead modules don't cover custom functionality, and a single modality ignores different roles and learning styles.",
+  "sourceRef": "set2.json Q35"
+ },
+ {
+  "id": 36,
+  "category": "Data, Reports & Dashboards",
+  "text": "Cloud Kicks wants to improve ROI by creating intelligent processes built on trusted, targeted data. What is a justification for using Data Cloud?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "To activate customizable sales forecasting and lead scoring"
+   },
+   {
+    "letter": "B",
+    "text": "To gain a deeper understanding of customer lifetime value"
+   },
+   {
+    "letter": "C",
+    "text": "To generate emails that send automatically on behalf of the sales team"
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: to activate customizable sales forecasting and lead scoring. Note: Data Cloud's core value is unifying customer data from every source into trusted profiles and then using segments and calculated insights, such as customer lifetime value, to drive targeted processes, which is closer to the customer-lifetime-value option. The previous bank's version (with different options) keyed creating customer segments with personas and scoring.",
+  "sourceRef": "set3.json Q36",
+  "review": true,
+  "reviewNote": "Contested: Data Cloud is about unified profiles, segments and calculated insights (e.g. customer lifetime value). The previous bank (Q49, different options) keyed customer segments."
+ },
+ {
+  "id": 37,
+  "category": "Product Knowledge & Integration",
+  "text": "The sales director wants reps to clone orders to avoid repetitive tasks. Which guideline should a consultant consider when cloning an order with products?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "A cloned order must have a later end date from the associated contract."
+   },
+   {
+    "letter": "B",
+    "text": "A cloned order's start date must fall between the associated contract's start and end dates."
+   },
+   {
+    "letter": "C",
+    "text": "A cloned order must be associated with the same contract as the original order."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: a cloned order must have a later end date than the associated contract. Note: Salesforce Help's order guidelines say an order's start date must fall within the associated contract's start and end dates, which is the rule a cloned order must also meet; the clone doesn't have to use the same contract. The previous bank keyed the start-date option.",
+  "sourceRef": "set3.json Q37",
+  "prevId": 163,
+  "review": true,
+  "reviewNote": "Key appears incorrect: Salesforce Help requires the order start date to fall within the contract dates. The previous bank (Q163) keyed that option."
+ },
+ {
+  "id": 38,
+  "category": "Lead & Campaign Management",
+  "text": "The admin has been getting complaints about duplicate leads and has already set up a matching rule for leads. What should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Change the criteria for the standard lead matching rule."
+   },
+   {
+    "letter": "B",
+    "text": "Validate the custom lead matching rule is activated."
+   },
+   {
+    "letter": "C",
+    "text": "Ensure the email address field is required."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "A custom matching rule only finds duplicates once it's activated and used by an active duplicate rule, so the first check is whether the custom lead matching rule is active. The standard lead matching rule's criteria can't be edited, and making Email required doesn't detect duplicates.",
+  "sourceRef": "set3.json Q38"
+ },
+ {
+  "id": 39,
+  "category": "Consulting Practices",
+  "text": "The sales team at Cloud Kicks has been late meeting project deadlines and missed multiple meetings. What should the consultant recommend to the project manager?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Confirm that the statement of work (SOW) is realistic."
+   },
+   {
+    "letter": "B",
+    "text": "Bring additional resources from the consulting firm to the project."
+   },
+   {
+    "letter": "C",
+    "text": "Revisit the communication plan and set up more frequent check-ins."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: confirm that the statement of work (SOW) is realistic, since deadlines that are consistently missed may have been set too aggressively. Note: missed deadlines together with missed meetings also point to a communication breakdown, and the previous bank keyed revisiting the communication plan with more frequent check-ins.",
+  "sourceRef": "set3.json Q39",
+  "prevId": 68,
+  "review": true,
+  "reviewNote": "Key taken from the sales sets; the previous bank (Q68) keyed \"Revisit the communication plan and set up more frequent check-ins\"."
+ },
+ {
+  "id": 40,
+  "category": "Agentforce & AI",
+  "text": "Universal Containers wants Einstein Generative AI sales emails, but the Draft with Einstein button isn't available and users see an error message. What is causing the error?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "The volume of usage exceeds the 2,000 emails per hour governor limit."
+   },
+   {
+    "letter": "B",
+    "text": "One or more email addresses are not valid, causing the error."
+   },
+   {
+    "letter": "C",
+    "text": "The user login session has expired, preventing access to the feature."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: usage has exceeded the 2,000-emails-per-hour limit, so Draft with Einstein is unavailable and users see an error until usage falls back under the limit. Note: the previous bank's variant of this question keyed an invalid recipient email address, and the hourly limit wasn't confirmed against current Salesforce documentation.",
+  "sourceRef": "set3.json Q40",
+  "review": true,
+  "reviewNote": "Key taken from the sales sets; the previous bank's variant (Q281) keyed an invalid email address. The hourly limit wasn't verified against current documentation."
+ },
+ {
+  "id": 41,
+  "category": "Consulting Practices",
+  "text": "Cloud Kicks has hired a consultant to help enhance its current Salesforce implementation. What should the consultant do first?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Design the architecture."
+   },
+   {
+    "letter": "B",
+    "text": "Conduct discovery sessions."
+   },
+   {
+    "letter": "C",
+    "text": "Define the solution."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Enhancing an existing implementation still starts with discovery sessions to understand current pain points and business requirements. Designing architecture or defining a solution before discovery risks solving the wrong problem.",
+  "sourceRef": "set3.json Q41",
+  "prevId": 95
+ },
+ {
+  "id": 42,
+  "category": "Agentforce & AI",
+  "text": "Universal Containers uses Draft with Einstein for an introduction email. Which predefined adjustment revises the draft with a more casual tone?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Make Less Formal"
+   },
+   {
+    "letter": "B",
+    "text": "Enhance Friendliness"
+   },
+   {
+    "letter": "C",
+    "text": "Optimize for Clarity"
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Exam key as printed: Optimize for Clarity. Note: Einstein's sales-email refinements include tone adjustments such as Make Less Formal, which is the one that gives a draft a more casual tone; clarity edits improve readability without changing tone. The previous bank's variant keyed the less-formal tone adjustment.",
+  "sourceRef": "set3.json Q42",
+  "review": true,
+  "reviewNote": "Key appears incorrect: \"Make Less Formal\" is the tone adjustment that makes a draft more casual. The previous bank's variant (Q282) keyed it."
+ },
+ {
+  "id": 43,
+  "category": "Opportunity Management",
+  "text": "Cloud Kicks wants to email the VP of sales whenever any opportunity of $100,000 or more reaches a probability of 75% or more. Which solution should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Change the stage on the opportunity."
+   },
+   {
+    "letter": "B",
+    "text": "Create a Lightning Email Template for the opportunity."
+   },
+   {
+    "letter": "C",
+    "text": "Configure a flow with an email alert for the opportunity."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: change the stage on the opportunity. Probability is driven by stage, so the stage decides when a deal crosses 75%. Note: changing a stage doesn't send any email; the documented solution is a record-triggered flow with an email alert when Amount ≥ 100,000 and Probability ≥ 75% (Opportunity Big Deal Alerts serve the same purpose). The previous bank keyed the flow.",
+  "sourceRef": "set3.json Q43",
+  "prevId": 73,
+  "review": true,
+  "reviewNote": "Key appears incorrect: only the flow with an email alert actually notifies the VP. The previous bank (Q73) keyed that option."
+ },
+ {
+  "id": 44,
+  "category": "Implementation Strategies",
+  "text": "The implementation is live, training is complete, IT has signed off. The admin keeps calling the consultant with questions about the sales process. What should the consultant do?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Suggest that CK purchase a support agreement."
+   },
+   {
+    "letter": "B",
+    "text": "Recommend that the admin attend Salesforce instructor-led training."
+   },
+   {
+    "letter": "C",
+    "text": "Conduct a knowledge transfer with the admin."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Ongoing questions after go-live mean the admin didn't receive an adequate knowledge transfer; conducting one closes the gap and lets the admin own the solution. Selling a support agreement or sending the admin to a class doesn't transfer knowledge about this specific implementation.",
+  "sourceRef": "set3.json Q44",
+  "prevId": 24
+ },
+ {
+  "id": 45,
+  "category": "Sales Life Cycle & Forecasting",
+  "text": "After a rollout to a new business unit, forecasting is inaccurate: some opportunities appear in the incorrect forecast category. How should a consultant troubleshoot efficiently?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Modify forecast hierarchy to sync with the forecast category."
+   },
+   {
+    "letter": "B",
+    "text": "Make the Forecast Category a required field on relevant Opportunity page layouts."
+   },
+   {
+    "letter": "C",
+    "text": "Verify the Stage to Forecast Category Mappings on the Opportunity object."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "An opportunity's forecast category comes from its stage, through the Stage-to-Forecast Category mapping on the Opportunity Stage picklist values. When opportunities land in the wrong category after a rollout, checking those mappings for the new business unit's stages is the quickest fix. The forecast hierarchy decides whose forecast an opportunity rolls into, not its category, and requiring the field doesn't fix the mapping.",
+  "sourceRef": "set3.json Q45"
+ },
+ {
+  "id": 46,
+  "category": "Agentforce & AI",
+  "text": "A survey regarding generative AI shows higher positive feedback in some geographic regions than others. What is the most likely reason?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Sales people in higher-scoring regions are not reviewing AI content."
+   },
+   {
+    "letter": "B",
+    "text": "Societal data is being provided to the AI model and introducing regional bias."
+   },
+   {
+    "letter": "C",
+    "text": "Sales processes in low-scoring regions have more automation."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "If the model is fed societal data that carries regional patterns, its output can suit some regions better than others, which shows up as uneven satisfaction. That is a bias problem in the data, not a matter of how much users review content or how much automation each region has.",
+  "sourceRef": "set3.json Q46"
+ },
+ {
+  "id": 47,
+  "category": "Product Knowledge & Integration",
+  "text": "Cloud Kicks uses Advanced Currency Management. The sales director wants the total amount of all open opportunities related to the account displayed on the Account page layout. How should the consultant implement this?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Use a record-triggered flow to set the value on the account."
+   },
+   {
+    "letter": "B",
+    "text": "Use a custom formula field on the Opportunity object."
+   },
+   {
+    "letter": "C",
+    "text": "Create a roll-up summary field on the Account object."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "With Advanced Currency Management enabled, roll-up summary fields from Opportunity to Account aren't supported because opportunities use dated rates; a record-triggered flow that maintains the total on the Account is the supported alternative. A formula on Opportunity can't aggregate across records.",
+  "sourceRef": "set3.json Q47",
+  "prevId": 153
+ },
+ {
+  "id": 48,
+  "category": "Product Knowledge & Integration",
+  "text": "After creating a brand new sneaker Product record, the admin is unable to add this product to Price Books. How should the consultant resolve the issue?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Set a standard active price."
+   },
+   {
+    "letter": "B",
+    "text": "Add the product to a price schedule."
+   },
+   {
+    "letter": "C",
+    "text": "Edit the sharing settings of the Product object."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "A product can only be added to custom price books after it has a standard price in the Standard Price Book. Sharing settings and price schedules aren't the cause.",
+  "sourceRef": "set3.json Q48",
+  "prevId": 111
+ },
+ {
+  "id": 49,
+  "category": "Opportunity Management",
+  "text": "Customers can pay large orders over 1 to 3 years in monthly installments beginning the month products are sold. The admin must configure Sales Cloud for the new terms and help finance forecast. What should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Use revenue schedules to capture installment payment plan details for each product."
+   },
+   {
+    "letter": "B",
+    "text": "Create an installment plan custom object to capture payments."
+   },
+   {
+    "letter": "C",
+    "text": "Set the default payment schedule to 12, 24, and 36 months in the price book."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Revenue schedules on the opportunity's products split each product's revenue into installments over the payment term (for example monthly over 12, 24 or 36 months starting in the month of sale), which gives finance a forecastable revenue timeline. Price books don't hold payment schedules, and a custom installment object rebuilds what schedules already provide.",
+  "sourceRef": "set3.json Q49"
+ },
+ {
+  "id": 50,
+  "category": "Opportunity Management",
+  "text": "Cloud Kicks has organization-wide defaults set to Private for Account. With the rollout of Opportunity Teams, what should a consultant consider?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Opportunity should be set to Public Read/Write first."
+   },
+   {
+    "letter": "B",
+    "text": "The Opportunity's Account will be implicitly Read for the team."
+   },
+   {
+    "letter": "C",
+    "text": "The Opportunity will be implicitly Write for the team."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Exam key: the opportunity is implicitly Write for the team. Note: Opportunity Team members get explicit Read Only or Read/Write access to the opportunity, set per member, and implicit (parent) sharing gives them Read access to the opportunity's Account even when Account OWD is Private. The previous bank keyed the Account option.",
+  "sourceRef": "set3.json Q50",
+  "prevId": 183,
+  "review": true,
+  "reviewNote": "Key appears incorrect: implicit sharing gives team members Read on the parent Account; opportunity access is set explicitly per member. The previous bank (Q183) keyed the Account option."
+ },
+ {
+  "id": 51,
+  "category": "Data, Reports & Dashboards",
+  "text": "The VP of sales wants to determine the number of closed deals on a monthly basis and compare month-over-month results. Which action should the consultant take?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Create a dashboard component and schedule the dashboard to refresh monthly."
+   },
+   {
+    "letter": "B",
+    "text": "Schedule a reporting snapshot of the Opportunity object to run monthly."
+   },
+   {
+    "letter": "C",
+    "text": "Schedule a reporting snapshot of the Opportunity History object to run monthly."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "A reporting snapshot copies the results of an Opportunity report into a custom object on a schedule, building month-by-month history of closed deals that can be compared over time. A dashboard refresh only shows the current state, and Opportunity History tracks field changes rather than monthly totals.",
+  "sourceRef": "set3.json Q51"
+ },
+ {
+  "id": 52,
+  "category": "Sales Life Cycle & Forecasting",
+  "text": "Universal Containers is splitting dense territories into smaller ones and reassigning accounts. Sales ops wants to review the new account assignments before the changes are reflected in Sales Cloud. How should the consultant show what the data will look like?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Run the updated assignment rules in the Planning State and view the accounts on the territory detail page."
+   },
+   {
+    "letter": "B",
+    "text": "Install the Territory Health Assessment app from AppExchange."
+   },
+   {
+    "letter": "C",
+    "text": "Develop reports and dashboards that compare the existing and new territories."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Exam key: build reports and dashboards that compare the existing and new territories. Note: Sales Territories already supports this: with the model in the Planning state, sales operations can run the updated assignment rules and review the resulting accounts on each territory's detail page before activating, without affecting users. The previous bank keyed that option.",
+  "sourceRef": "set3.json Q52",
+  "prevId": 26,
+  "review": true,
+  "reviewNote": "Key taken from the sales sets; the previous bank (Q26) keyed running the assignment rules in the Planning State, which matches Salesforce documentation."
+ },
+ {
+  "id": 53,
+  "category": "Lead & Campaign Management",
+  "text": "Cloud Kicks wants logic and automation to qualify top leads, and has significant data on converted leads and won opportunities. What should the consultant do first?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Review converted lead data with sales and marketing to understand the interaction patterns that led to conversion."
+   },
+   {
+    "letter": "B",
+    "text": "Configure a qualification screen flow to help sales reps quickly determine which leads are most important."
+   },
+   {
+    "letter": "C",
+    "text": "Identify a recommended base Lead score, evaluate the results, and adjust the score accordingly."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "A best-practice scoring implementation starts by analyzing the converted-lead and won-opportunity data with sales and marketing to identify which interactions predict conversion; the scoring logic is built from those findings. Picking a base score or building a flow first puts the solution before the analysis.",
+  "sourceRef": "set3.json Q53",
+  "prevId": 69
+ },
+ {
+  "id": 54,
+  "category": "Agentforce & AI",
+  "text": "Which ethical practice should be prioritized when integrating AI into Salesforce workflows?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Reducing human involvement in AI oversight to limit bias"
+   },
+   {
+    "letter": "B",
+    "text": "Encrypting all AI outputs to foster privacy"
+   },
+   {
+    "letter": "C",
+    "text": "Ensuring transparency in AI decision-making processes"
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Transparency, being clear about when AI is used and how it reaches its outputs, is a core Salesforce trusted-AI practice and lets users judge when to rely on it. Reducing human oversight increases risk, and encrypting outputs is a security measure rather than an ethical practice.",
+  "sourceRef": "set3.json Q54"
+ },
+ {
+  "id": 55,
+  "category": "Implementation Strategies",
+  "text": "NTO wants to update territory assignments for all reps, which can impact the year-end close due at quarter end. IT also plans to release a new incentive management package from AppExchange. What should the consultant consider when deciding on the timing?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Testing changes to Sales Territories and the incentive management package should be completed in a developer org before releasing to production."
+   },
+   {
+    "letter": "B",
+    "text": "Combining Sales Territories changes and the incentive management package increases downtime and ramp-up time for users."
+   },
+   {
+    "letter": "C",
+    "text": "Installing a new incentive management package along with Sales Territories changes may add high risk to the deployment."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Exam key: combining the territory changes with the incentive management package increases downtime and ramp-up time for users just as they're focused on the year-end close. Note: the previous bank's variant keyed the deployment-risk option; both options argue against releasing the two changes together near quarter end.",
+  "sourceRef": "set3.json Q55",
+  "review": true,
+  "reviewNote": "Key taken from the sales sets; the previous bank's variant (Q293) keyed the deployment-risk option."
+ },
+ {
+  "id": 56,
+  "category": "Lead & Campaign Management",
+  "text": "A marketing team uses Marketing Cloud for managing prospects and wants to hand off prospects to the sales team. What should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "An AppExchange integration package"
+   },
+   {
+    "letter": "B",
+    "text": "An integration to Sales Cloud that generates tasks with lead information"
+   },
+   {
+    "letter": "C",
+    "text": "An integration that creates leads in Sales Cloud"
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Handing prospects to sales means sales needs them as Leads it can qualify, assign and convert, so the integration should create Lead records in Sales Cloud. Tasks carrying lead details can't be scored, routed or converted, and an AppExchange package is only one way to build an integration, not the design decision itself.",
+  "sourceRef": "set4.json Q56"
+ },
+ {
+  "id": 57,
+  "category": "Sales Life Cycle & Forecasting",
+  "text": "Cloud Kicks is implementing Sales Territories for its retail unit. The sales director wants a detailed roll-up forecast for territories. What should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Include the Forecast Manager field on the Account page layout."
+   },
+   {
+    "letter": "B",
+    "text": "Assign a Forecast Manager to each region."
+   },
+   {
+    "letter": "C",
+    "text": "Assign a role for each manager in the user role hierarchy."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Territory forecasts roll up through the territory hierarchy, and the roll-up is driven by the Forecast Manager assigned to each territory. The role hierarchy (Option C) drives role-based forecasts, not territory forecasts, and adding a field to a layout does nothing for roll-ups.",
+  "sourceRef": "set4.json Q57",
+  "prevId": 6
+ },
+ {
+  "id": 58,
+  "category": "Sales Life Cycle & Forecasting",
+  "text": "Cloud Kicks sells formal and athletic footwear and uses Product Families. It currently forecasts one Expected Revenue amount for all products. How can it divide forecasts by footwear line?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Configure separate stages and sales processes for each Product Family."
+   },
+   {
+    "letter": "B",
+    "text": "Configure a new Forecast Type on Opportunity Product grouped by Product Family."
+   },
+   {
+    "letter": "C",
+    "text": "Configure a new Forecast Type on Opportunity grouped by Product Family."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Forecasting by Product Family requires a Forecast Type based on Opportunity Product (line items) grouped by Product Family, because the family is a property of each product line, not of the opportunity. Separate sales processes per family or an opportunity-level forecast type can't split the amount.",
+  "sourceRef": "set4.json Q58",
+  "prevId": 117
+ },
+ {
+  "id": 59,
+  "category": "Product Knowledge & Integration",
+  "text": "Universal Containers wants to automatically add sales rep emails and events from Gmail to the activity timeline of related records. What should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Email to Salesforce"
+   },
+   {
+    "letter": "B",
+    "text": "Einstein Activity Capture"
+   },
+   {
+    "letter": "C",
+    "text": "AppExchange app"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Einstein Activity Capture connects to reps' Google (Gmail and Google Calendar) or Microsoft accounts and automatically adds their emails and events to the activity timeline of related records. Email to Salesforce only logs emails reps BCC or forward one at a time, and an AppExchange app adds cost for something Sales Cloud already includes.",
+  "sourceRef": "set4.json Q59"
+ },
+ {
+  "id": 60,
+  "category": "Product Knowledge & Integration",
+  "text": "Universal Containers has used Sales Cloud for 5 years. The SVP wants Einstein Lead Scoring and Einstein Deal Insights implemented immediately. Which step should the consultant take first?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Run the Einstein Readiness Assessor in a sandbox."
+   },
+   {
+    "letter": "B",
+    "text": "Enable Einstein Activity Capture in a developer org."
+   },
+   {
+    "letter": "C",
+    "text": "Enable both Einstein features in production."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "The Einstein Readiness Assessor checks whether the org has enough historical lead and opportunity data to support Einstein Lead Scoring and Deal Insights, so it should be run first, before enabling anything in production.",
+  "sourceRef": "set4.json Q60",
+  "prevId": 115
+ },
+ {
+  "id": 61,
+  "category": "Data, Reports & Dashboards",
+  "text": "Sales managers want a dashboard of KPIs to measure day-to-day operations. Which key metric should the consultant include?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Number of outbound calls made over a period of time"
+   },
+   {
+    "letter": "B",
+    "text": "Number of marketing qualified leads (MQL)"
+   },
+   {
+    "letter": "C",
+    "text": "Number of updated opportunities"
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Day-to-day operational KPIs measure rep activity, and outbound calls over a period is a direct activity metric managers can act on daily. MQL counts are a marketing measure, and 'updated opportunities' is too vague to drive behavior.",
+  "sourceRef": "set4.json Q61",
+  "prevId": 99
+ },
+ {
+  "id": 62,
+  "category": "Data, Reports & Dashboards",
+  "text": "A U.S.-based team wants to grow in Australia; multiple currencies are enabled and AUD added. What should the consultant consider so the team can report on Australian deal values in USD?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Reports display the secondary currency in parentheses."
+   },
+   {
+    "letter": "B",
+    "text": "Only the user's default currency is shown in tabular reports."
+   },
+   {
+    "letter": "C",
+    "text": "A formula field with currency calculation should be added to reports."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "With multiple currencies enabled, Salesforce displays amounts in the record's currency followed by the converted amount in parentheses, so the team can read Australian deals in USD without extra configuration. Reports aren't limited to the user's default currency, and a currency formula field duplicates the built-in conversion.",
+  "sourceRef": "set4.json Q62"
+ },
+ {
+  "id": 63,
+  "category": "Consulting Practices",
+  "text": "An executive asked the admin for a diagram showing the high-level processes within the business, to show the context of a new process within the overall business. What should the admin create?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Value Stream Map"
+   },
+   {
+    "letter": "B",
+    "text": "Capability Model"
+   },
+   {
+    "letter": "C",
+    "text": "Detail Process Mapping"
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: Value Stream Map. Note: Trailhead's business process mapping content describes a Capability Model as the diagram of the high-level processes within a business, used to show a process's context within the overall business, which matches this stem almost word for word. A value stream map follows one end-to-end flow of value. The previous bank keyed Capability Model.",
+  "sourceRef": "set4.json Q63",
+  "prevId": 35,
+  "review": true,
+  "reviewNote": "Key appears incorrect: Trailhead defines the Capability Model with this stem's wording. The previous bank (Q35) keyed Capability Model."
+ },
+ {
+  "id": 64,
+  "category": "Consulting Practices",
+  "text": "How can a consultant determine which capabilities of a Sales Cloud implementation are required during the Discovery phase?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Demo Sales Cloud to end users."
+   },
+   {
+    "letter": "B",
+    "text": "Observe end users."
+   },
+   {
+    "letter": "C",
+    "text": "Establish KPIs for end users."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Exam key: establish KPIs for end users, since agreeing on measurable outcomes during Discovery shows which capabilities are needed to move them. Note: the previous bank keyed observing end users, which reveals how work is actually done; both are Discovery techniques.",
+  "sourceRef": "set4.json Q64",
+  "prevId": 41,
+  "review": true,
+  "reviewNote": "Key taken from the sales sets; the previous bank (Q41) keyed \"Observe end users\"."
+ },
+ {
+  "id": 65,
+  "category": "Lead & Campaign Management",
+  "text": "Cloud Kicks enabled Einstein Lead Scoring and rolled out Sales Cloud Einstein to pilot users, who can't see the Lead Score field on the Lead record page. What should the consultant do?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Assign the Einstein Lead Scoring permission set."
+   },
+   {
+    "letter": "B",
+    "text": "Add the Lead Score field to the Lead Page layout."
+   },
+   {
+    "letter": "C",
+    "text": "Add the Lead Score field to the Lead List View."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: assign the Einstein Lead Scoring permission set, because users without Einstein Lead Scoring access can't see scores. Note: the stem says Sales Cloud Einstein was already rolled out to the pilot users, so the more likely gap is that the Lead Score field (or the Einstein scoring component) isn't on the Lead page layout or record page; the previous bank's variant keyed adding the field to the page layout.",
+  "sourceRef": "set4.json Q65",
+  "review": true,
+  "reviewNote": "Key taken from the sales sets; the previous bank's variant (Q300) keyed adding the Lead Score field to the page layout."
+ },
+ {
+  "id": 66,
+  "category": "Lead & Campaign Management",
+  "text": "Management at Universal Containers wants to identify duplicate Leads in its org so marketing reps can clean them up later. What should a consultant do?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Create a Validation Rule to find duplicates."
+   },
+   {
+    "letter": "B",
+    "text": "Run a duplicate job with a Matching Rule."
+   },
+   {
+    "letter": "C",
+    "text": "Create a formula field on Lead for duplicates."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "A duplicate job runs a matching rule across all existing Lead records and produces duplicate record sets that marketing can review and merge later. Formula fields and validation rules only operate on one record at a time.",
+  "sourceRef": "set4.json Q66",
+  "prevId": 92
+ },
+ {
+  "id": 67,
+  "category": "Product Knowledge & Integration",
+  "text": "A VP of sales wants better visibility into rep email and meeting activity without requiring manual data entry. Which feature should they implement?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Einstein Activity Capture"
+   },
+   {
+    "letter": "B",
+    "text": "Lead Inbox"
+   },
+   {
+    "letter": "C",
+    "text": "Email Insights"
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Einstein Activity Capture automatically syncs reps' emails and calendar events into Salesforce and provides activity metrics, giving the VP visibility with no manual logging. Email Insights and an inbox view surface information to the rep but don't capture activity for managers.",
+  "sourceRef": "set4.json Q67"
+ },
+ {
+  "id": 68,
+  "category": "Data, Reports & Dashboards",
+  "text": "CK migrated 70 million records from a legacy database to a data warehouse that will be synced with Sales Cloud. CK wants to search and cross-reference records with the original source database. What should a consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Use the standard External ID field and map this to the source record ID value."
+   },
+   {
+    "letter": "B",
+    "text": "Use a custom field named External ID and map this to the Sales Cloud record ID value."
+   },
+   {
+    "letter": "C",
+    "text": "Use a custom External ID field and map this to the source record ID value."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "A custom External ID field holding the source system's record ID gives a unique, indexed key for upserts and cross-referencing back to the warehouse. There is no standard External ID field, and mapping it to the Salesforce ID (Option B) defeats the purpose.",
+  "sourceRef": "set4.json Q68",
+  "prevId": 32
+ },
+ {
+  "id": 69,
+  "category": "Product Knowledge & Integration",
+  "text": "The VP of sales wants to give reps options for changing account or contract details for a created order. Which condition should the consultant consider?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "The order associated with the account is in draft status."
+   },
+   {
+    "letter": "B",
+    "text": "The order must be associated with an active contract."
+   },
+   {
+    "letter": "C",
+    "text": "The currency associated with the order can be different from the contract."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "An order's Account and Contract can only be changed while the order is in Draft status; once activated those fields are locked. Orders don't need an active contract (Option B), and the currency must match the contract's, not differ from it.",
+  "sourceRef": "set4.json Q69",
+  "prevId": 10
+ },
+ {
+  "id": 70,
+  "category": "Opportunity Management",
+  "text": "A sales director reports that reps are missing quotas because they are pursuing low-probability deals. Which feature lets the team automatically see which opportunities are likely to close, based on past patterns?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Einstein Lead Scoring"
+   },
+   {
+    "letter": "B",
+    "text": "Einstein Opportunity Scoring"
+   },
+   {
+    "letter": "C",
+    "text": "Calculated Insights"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Einstein Opportunity Scoring learns from the org's past won and lost deals and scores each open opportunity on its likelihood to close, so reps can drop low-probability deals and focus on winnable ones. Einstein Lead Scoring scores leads, not opportunities, and Calculated Insights are Data Cloud metrics, not deal predictions.",
+  "sourceRef": "set4.json Q70"
+ },
+ {
+  "id": 71,
+  "category": "Product Knowledge & Integration",
+  "text": "Cloud Kicks has discontinued a product, and a sales manager wants to make it unavailable for users. What should a consultant do?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Delete the Product record."
+   },
+   {
+    "letter": "B",
+    "text": "Remove the Product from all Price Books."
+   },
+   {
+    "letter": "C",
+    "text": "Change the Product's sharing settings."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: delete the Product record. Note: this contradicts Q12 in the same set. A product that appears on opportunities, quotes or orders can't be deleted, and deleting would lose history; the documented way to make a discontinued product unavailable is to uncheck Active (or, of the options here, remove its price book entries). The previous bank's variant keyed removing it from all price books.",
+  "sourceRef": "set4.json Q71",
+  "review": true,
+  "reviewNote": "Key appears incorrect: it contradicts Q12 (uncheck Active). The previous bank's variant (Q236) keyed removing the product from all price books."
+ },
+ {
+  "id": 72,
+  "category": "Agentforce & AI",
+  "text": "Cloud Kicks is introducing AI to its workforce and plans to mitigate toxic outputs. Which Salesforce guideline for responsible AI is being implemented?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Safety"
+   },
+   {
+    "letter": "B",
+    "text": "Empowerment"
+   },
+   {
+    "letter": "C",
+    "text": "Transparency"
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Safety in Salesforce's guidelines for responsible generative AI means mitigating bias, toxicity and harmful output, for example with toxicity detection, testing and guardrails. Transparency is about disclosing AI use and explaining outputs, and Empowerment is about AI supporting people's work.",
+  "sourceRef": "set4.json Q72"
+ },
+ {
+  "id": 73,
+  "category": "Product Knowledge & Integration",
+  "text": "Universal Containers needs a tool that analyzes voice and video call records for competitor mentions, coaching opportunities, and other key information. Which feature provides this?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Call Explorer"
+   },
+   {
+    "letter": "B",
+    "text": "Einstein Sales Insights"
+   },
+   {
+    "letter": "C",
+    "text": "Call Summaries"
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Call Explorer, part of Einstein Conversation Insights, analyzes recorded voice and video calls so users can find competitor mentions, coaching moments and other key information across calls. Call Summaries summarize a single call, and Einstein Sales Insights isn't the call-analysis tool.",
+  "sourceRef": "set4.json Q73"
+ },
+ {
+  "id": 74,
+  "category": "Data, Reports & Dashboards",
+  "text": "The operations manager wants to synchronize Cloud Kicks' customer list from its back office systems with Sales Cloud. What is the first step to ensure data integrity?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Create a unique ID field on the Opportunity object."
+   },
+   {
+    "letter": "B",
+    "text": "Create a matching rule on the Account object."
+   },
+   {
+    "letter": "C",
+    "text": "Create an External ID field on the Account object."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Before syncing the customer list from back-office systems, the Account object needs an External ID field holding each system's customer key, so the integration can upsert and match records reliably without creating duplicates. A matching rule only flags duplicates, and an ID on Opportunity doesn't identify customers.",
+  "sourceRef": "set4.json Q74"
+ },
+ {
+  "id": 75,
+  "category": "Lead & Campaign Management",
+  "text": "Prospects are exposed to many marketing activities; usually a combination of several results in a sale. How should the consultant track which marketing activities influenced the purchase?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Implement Customizable Campaign Influence."
+   },
+   {
+    "letter": "B",
+    "text": "Make the Primary Campaign Source required."
+   },
+   {
+    "letter": "C",
+    "text": "Create a junction object between Campaign and Opportunity."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Customizable Campaign Influence attributes an opportunity's revenue across all the campaigns that touched it, using standard or custom attribution models, which is what a multi-touch buying journey needs. Primary Campaign Source credits a single campaign, and a custom junction object rebuilds what Campaign Influence already provides.",
+  "sourceRef": "set4.json Q75"
+ },
+ {
+  "id": 76,
+  "category": "Data, Reports & Dashboards",
+  "text": "Universal Containers' sales operations team needs to provide visibility on sales pipeline changes within the last month. How should the consultant meet this requirement?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Create an Opportunity History report for open pipeline opportunities."
+   },
+   {
+    "letter": "B",
+    "text": "Create a sales pipeline dashboard that includes filters for Opportunity."
+   },
+   {
+    "letter": "C",
+    "text": "Create a reporting snapshot of the Opportunity pipeline."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "The correct answer is to create an Opportunity History report for open pipeline opportunities. The requirement is to see changes over the last month. Opportunity History is the standard tool for this, as it logs changes to tracked fields. A report on this data, filtered for the relevant time period, will directly show how the pipeline has evolved.",
+  "sourceRef": "set5.json Q76",
+  "prevId": 231
+ },
+ {
+  "id": 77,
+  "category": "Data, Reports & Dashboards",
+  "text": "Cloud Kicks has a custom object, Project__c, with a lookup to Opportunity. The project manager wants a report that includes both Project__c and Opportunity data. What should the consultant use?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Matrix reports"
+   },
+   {
+    "letter": "B",
+    "text": "Custom report types"
+   },
+   {
+    "letter": "C",
+    "text": "Joined reports"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "The correct answer is custom report types. Standard report types may not include the relationship between a custom object and Opportunity. Creating a custom report type allows the consultant to explicitly define this relationship, with Project__c as the primary, and Opportunity as a related object. This enables a single report to include fields from both objects, fulfilling the request.",
+  "sourceRef": "set5.json Q77",
+  "prevId": 230
+ },
+ {
+  "id": 78,
+  "category": "Product Knowledge & Integration",
+  "text": "Sales leadership complains that CRM data is incomplete because reps do not log meetings or emails. Which tool automates activity logging?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Salesforce Scheduler"
+   },
+   {
+    "letter": "B",
+    "text": "Salesforce Inbox for Outlook"
+   },
+   {
+    "letter": "C",
+    "text": "Einstein Activity Capture"
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "The correct answer is Einstein Activity Capture. The core problem is that reps are not manually logging their activities. The solution is to automate the logging process. Einstein Activity Capture does exactly that, automatically syncing emails and meetings from reps' email and calendar systems, ensuring a complete and accurate record of customer interactions without relying on manual entry.",
+  "sourceRef": "set5.json Q78",
+  "prevId": 229
+ },
+ {
+  "id": 79,
+  "category": "Agentforce & AI",
+  "text": "While implementing Agentforce, the sales director needs an agent to support relationships with contacts and person accounts to drive more business. Which Agentforce for Sales agent should be set up?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Sales Coach"
+   },
+   {
+    "letter": "B",
+    "text": "SDR Agent"
+   },
+   {
+    "letter": "C",
+    "text": "Employee Agent"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "The correct answer is SDR Agent. Agentforce includes different types of agents for different purposes. The SDR (Sales Development Representative) Agent is specifically built to handle the top-of-funnel sales activities: engaging with leads, qualifying them, and nurturing relationships. This directly supports the sales director's goal of using an AI agent to drive more business by engaging with contacts.",
+  "sourceRef": "set5.json Q79",
+  "prevId": 228
+ },
+ {
+  "id": 80,
+  "category": "Implementation Strategies",
+  "text": "Universal Containers needs to adjust the sharing model from public to private. How should the consultant validate the new requirements with no disruptions to daily business?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Create a testing strategy using sandbox environments that ensures requirements are met, integrations remain functional, and existing functionality hasn't regressed."
+   },
+   {
+    "letter": "B",
+    "text": "Build and test in a Developer sandbox, then have the developers migrate the changes to production overnight so that users are not interrupted during their work day."
+   },
+   {
+    "letter": "C",
+    "text": "Send out a notification once development has reached the UAT environment informing teams that they must perform testing and provide results within the stated window."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "The correct answer is to create a testing strategy using sandbox environments. This is the only safe and reliable way to validate a fundamental change like switching from a public to a private sharing model. Sandboxes provide isolated, risk-free environments to test the new configuration, ensure integrations work, and confirm that no existing functionality is broken, all without impacting live business operations.",
+  "sourceRef": "set5.json Q80",
+  "prevId": 226
+ },
+ {
+  "id": 81,
+  "category": "Data, Reports & Dashboards",
+  "text": "Sales data is quickly outdated and the consultant wants to keep Account data current. What should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Email the contacts and leads to obtain their current information."
+   },
+   {
+    "letter": "B",
+    "text": "Build a weekly data update from in-house systems to refresh data."
+   },
+   {
+    "letter": "C",
+    "text": "Use third-party data services to update and add records."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "The correct answer is to use third-party data services to update and add records. This is a modern and efficient approach to data management. Data-as-a-service (DaaS) providers can automatically match and update Salesforce records, ensuring that account information is enriched and kept current. This is far more scalable and reliable than manual methods or internal ETL processes for this type of data.",
+  "sourceRef": "set5.json Q81",
+  "prevId": 225
+ },
+ {
+  "id": 82,
+  "category": "Implementation Strategies",
+  "text": "Cloud Kicks, a large global organization, is rolling out a complex Salesforce Release to staff in offices around the world. What should CK do when training this audience?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Conduct Train-the-trainer sessions."
+   },
+   {
+    "letter": "B",
+    "text": "Leverage Trailhead and documentation."
+   },
+   {
+    "letter": "C",
+    "text": "Configure Path on Opportunities."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "For a complex release going to a large, globally distributed workforce, train-the-trainer scales: local trainers learn the release in depth and then train their own offices in their language and time zone. Trailhead and documentation alone don't ensure a complex release is understood, and Path is a configuration feature, not a training approach.",
+  "sourceRef": "set5.json Q82"
+ },
+ {
+  "id": 83,
+  "category": "Implementation Strategies",
+  "text": "Cloud Kicks is developing its organizational change management (OCM) and rollout strategy, leveraging the experiences of partners and customers in the Salesforce ecosystem. Which resource should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Salesforce Premier Success"
+   },
+   {
+    "letter": "B",
+    "text": "Trailblazer Community"
+   },
+   {
+    "letter": "C",
+    "text": "End user feedback"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "The Trailblazer Community is where Salesforce customers and partners share rollout, change-management, and adoption experiences. Premier Success is a paid support tier, and internal feedback doesn't tap the wider ecosystem.",
+  "sourceRef": "set5.json Q83",
+  "prevId": 107
+ },
+ {
+  "id": 84,
+  "category": "Product Knowledge & Integration",
+  "text": "CK uses the Amount field in its Einstein Opportunity Scoring model. What will a user without access to the Amount field observe?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "The Amount field will display an error in the contributing factors section."
+   },
+   {
+    "letter": "B",
+    "text": "The Opportunity Score field and the Amount field will be hidden for that user."
+   },
+   {
+    "letter": "C",
+    "text": "The Amount field will be hidden from the contributing factors section."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Einstein Opportunity Scoring respects field-level security: a user who can't see Amount simply doesn't see it listed among the contributing factors; the score itself is still displayed, and no error is shown.",
+  "sourceRef": "set5.json Q84",
+  "prevId": 175
+ },
+ {
+  "id": 85,
+  "category": "Implementation Strategies",
+  "text": "CK's users have felt unmotivated to use new systems in the past. Which action should the consultant recommend to motivate users and help drive adoption?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Postpone deployment until end users are comfortable with the solution."
+   },
+   {
+    "letter": "B",
+    "text": "Survey end users to understand their pain points with legacy systems."
+   },
+   {
+    "letter": "C",
+    "text": "Install the Salesforce Adoption Dashboards from AppExchange."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "The correct answer is to survey end users to understand their pain points with legacy systems. Motivation and adoption are often tied to feeling heard and seeing that a new system solves real problems. By proactively seeking user feedback, the company demonstrates that it values their input. This insight can then be used to shape the implementation and create a solution that users are more likely to embrace, addressing the historical lack of motivation.",
+  "sourceRef": "set5.json Q85",
+  "prevId": 224
+ },
+ {
+  "id": 86,
+  "category": "Account & Contact Management",
+  "text": "Cloud Kicks wants team selling to share differing levels of access to Accounts and associated records (Opportunities, Contracts, Cases) based on team member responsibilities. Which feature should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Opportunity Teams"
+   },
+   {
+    "letter": "B",
+    "text": "Account Teams"
+   },
+   {
+    "letter": "C",
+    "text": "Role Hierarchy"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "The correct answer is Account Teams. Account Teams are the ideal feature for team selling. They allow you to assemble a cross-functional team around a specific account and grant each member the appropriate level of access not just to the account, but also to its child records like opportunities and cases, fulfilling all parts of the requirement.",
+  "sourceRef": "set5.json Q86",
+  "prevId": 223
+ },
+ {
+  "id": 87,
+  "category": "Product Knowledge & Integration",
+  "text": "What is a consideration when enabling multiple currencies?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Existing records must be manually updated with a default currency code prior to implementation."
+   },
+   {
+    "letter": "B",
+    "text": "Only Opportunities, Leads, and Opportunity Product Schedules support multiple currencies."
+   },
+   {
+    "letter": "C",
+    "text": "Changes to exchange rates update the converted amount on all records including closed opportunities."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "When multiple currencies are enabled (without dated exchange rates), changing a conversion rate recalculates the converted amounts on all records, closed opportunities included. Existing records are given the corporate currency automatically during enablement, and many objects besides Opportunities and Leads support currencies.",
+  "sourceRef": "set5.json Q87"
+ },
+ {
+  "id": 88,
+  "category": "Agentforce & AI",
+  "text": "What is an example of adversarial testing in generative AI models?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Fixing errors or inconsistencies in the model's explanations"
+   },
+   {
+    "letter": "B",
+    "text": "Testing the model by using biased or inaccurate inputs"
+   },
+   {
+    "letter": "C",
+    "text": "Assessing the model by using diverse or unseen datasets"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "The correct answer is testing the model by using biased or inaccurate inputs. Adversarial testing is a specific type of security and robustness testing where the input is deliberately manipulated to cause the model to make a mistake, reveal a bias, or behave in an unexpected way. It's a crucial part of ensuring the safety and reliability of AI systems.",
+  "sourceRef": "set5.json Q88",
+  "prevId": 222
+ },
+ {
+  "id": 89,
+  "category": "Implementation Strategies",
+  "text": "UC stakeholders believe user adoption is best measured by the login rate. Which additional key metric should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Web-to-Lead submissions in the last 30 days"
+   },
+   {
+    "letter": "B",
+    "text": "Opportunities modified in the last 30 days"
+   },
+   {
+    "letter": "C",
+    "text": "Products created in the last 30 days"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Logins only show that users signed in; opportunities modified in the last 30 days show reps are actually working their pipeline in Salesforce, which makes it the stronger companion adoption metric. Web-to-Lead submissions measure marketing volume, and creating products is an admin task.",
+  "sourceRef": "set5.json Q89"
+ },
+ {
+  "id": 90,
+  "category": "Lead & Campaign Management",
+  "text": "The NTO sales team reports that many leads are missing an email address or phone number. Which approach should a consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Set default values for Phone and Email fields on the Lead object."
+   },
+   {
+    "letter": "B",
+    "text": "Create a validation rule that requires a Phone and Email."
+   },
+   {
+    "letter": "C",
+    "text": "Make Phone and Email fields required on the Lead convert form."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "A validation rule that requires Phone and Email enforces the data at save time for every lead regardless of how it's created. Default values would insert placeholder data, and the convert form is too late in the process.",
+  "sourceRef": "set5.json Q90",
+  "prevId": 93
+ },
+ {
+  "id": 91,
+  "category": "Product Knowledge & Integration",
+  "text": "CK's outbound campaign: agents call leads from a list, capture notes, Salesforce presents the next lead automatically, agents leave voicemails and call back unavailable customers, and supervisors coach based on call transcripts. Which product should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Sales Cloud"
+   },
+   {
+    "letter": "B",
+    "text": "Sales Engagement"
+   },
+   {
+    "letter": "C",
+    "text": "Native CTI Connector"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Sales Engagement provides work queues and cadences that present the next lead automatically, with calling, notes, voicemail drop and call-back steps, and with conversation insights supervisors can coach from call transcripts. Sales Cloud alone doesn't automate the call queue, and a CTI connector only adds telephony.",
+  "sourceRef": "set5.json Q91"
+ },
+ {
+  "id": 92,
+  "category": "Implementation Strategies",
+  "text": "The deployment date for the Sales Cloud project is the same weekend as a Salesforce Release. Which best practice should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Continue the planned deployment concurrent with the Salesforce Release."
+   },
+   {
+    "letter": "B",
+    "text": "Inform the customer about the Salesforce Release and that the deployment will fail."
+   },
+   {
+    "letter": "C",
+    "text": "Move the deployment date, update the project plan, and communicate the change."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "When a deployment falls on a Salesforce release weekend, the safe practice is to move the deployment, update the project plan and communicate the change, since the instance may be under maintenance and the release can affect what was tested. Deploying during the release adds avoidable risk, and announcing that it will fail isn't a plan.",
+  "sourceRef": "set5.json Q92"
+ },
+ {
+  "id": 93,
+  "category": "Sales Life Cycle & Forecasting",
+  "text": "CK has implemented different sales stages across its product lines and wants to deploy Collaborative Forecasts to all sales users. What should a consultant consider?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Opportunity Splits must be enabled at the same time."
+   },
+   {
+    "letter": "B",
+    "text": "A Single Category or Cumulative Forecast Rollup should be defined."
+   },
+   {
+    "letter": "C",
+    "text": "Multiple Forecast Types must be created and activated."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Exam key: multiple forecast types must be created and activated. Note: different sales stages per product line still map to the same forecast categories, so one opportunity forecast type covers every line. What every Collaborative Forecasts rollout does require is choosing Single Category or Cumulative Forecast Rollups, which the previous bank keyed.",
+  "sourceRef": "set5.json Q93",
+  "prevId": 151,
+  "review": true,
+  "reviewNote": "Key appears incorrect: different stages map to forecast categories, so multiple forecast types aren't required. The previous bank (Q151) keyed the rollup option."
+ },
+ {
+  "id": 94,
+  "category": "Implementation Strategies",
+  "text": "A custom lead qualification process has been underutilized; the consultant believes it's due to a lack of executive sponsorship. Why is executive sponsor involvement so important?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Executive sponsors ensure there is a workable solution."
+   },
+   {
+    "letter": "B",
+    "text": "Executive sponsors are champions of the project."
+   },
+   {
+    "letter": "C",
+    "text": "Executive sponsors support the system after launch."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Executive sponsors act as champions who visibly back the project, communicate its importance, and hold teams accountable for adopting it. Without that sponsorship a process is easily ignored, regardless of how well it was built.",
+  "sourceRef": "set5.json Q94",
+  "prevId": 70
+ },
+ {
+  "id": 95,
+  "category": "Opportunity Management",
+  "text": "Reps are negotiating deals with contacts without the authority to make a decision, resulting in lost deals. What should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Require sales reps to add the stakeholder as the decision maker on each opportunity before the rep can progress the stage."
+   },
+   {
+    "letter": "B",
+    "text": "Allow sales reps to mark the contact on each opportunity as \"Primary\" to indicate the decision maker."
+   },
+   {
+    "letter": "C",
+    "text": "Enable Opportunity Teams so sales reps can track the decision maker for each opportunity."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Requiring reps to record the decision maker as a Contact Role before the opportunity can advance (via a validation rule or Path requirement) ensures every negotiated deal has an identified authority. A 'Primary' flag doesn't guarantee authority, and Opportunity Teams track internal members, not customer contacts.",
+  "sourceRef": "set5.json Q95",
+  "prevId": 158
+ },
+ {
+  "id": 96,
+  "category": "Lead & Campaign Management",
+  "text": "Cloud Kicks purchased a list of prospects and wants reps to contact them and measure the ROI of the purchased list. Which solution should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Import the list as new Leads and map the Campaign during import."
+   },
+   {
+    "letter": "B",
+    "text": "Import the prospects as Contacts and assign them to Accounts."
+   },
+   {
+    "letter": "C",
+    "text": "Import the list as new Leads and update the Lead Source to \"Purchased Lead\"."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Importing the purchased list as Leads and mapping them to a Campaign during import lets the team report campaign statistics (leads, converted leads, won revenue) against the list's cost for ROI. Lead Source alone doesn't capture cost, and importing as Contacts skips qualification.",
+  "sourceRef": "set6.json Q96",
+  "prevId": 129
+ },
+ {
+  "id": 97,
+  "category": "Account & Contact Management",
+  "text": "A user owns more than 12,000 account records, and changes to the sharing model take increasingly more time. Which solution should the consultant implement?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Distribute the data equally to every role in the role hierarchy."
+   },
+   {
+    "letter": "B",
+    "text": "Move the user to the bottom of the role hierarchy."
+   },
+   {
+    "letter": "C",
+    "text": "Remove the user from the role hierarchy."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: distribute the records equally across the roles in the role hierarchy, which spreads out the ownership skew. Note: Salesforce's ownership-skew guidance is to spread records across more owners or, if one user must own more than 10,000 records, to give that user no role (or a role of their own at the top of the hierarchy) so sharing changes don't recalculate through the hierarchy. That makes removing the user from the role hierarchy the documented option; moving them to the bottom makes it worse.",
+  "sourceRef": "set6.json Q97",
+  "review": true,
+  "reviewNote": "Contested: Salesforce's ownership-skew guidance points to removing the user from the role hierarchy (or giving them a top-level role of their own). The previous bank's variant (Q214) keyed a lower role."
+ },
+ {
+  "id": 98,
+  "category": "Opportunity Management",
+  "text": "New sales executives want to prioritize contacts who make or influence the purchase decision. What should the consultant recommend to document decision makers and influencers?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Use Contact Roles on the Opportunity object."
+   },
+   {
+    "letter": "B",
+    "text": "Update Primary Contact on all Opportunities."
+   },
+   {
+    "letter": "C",
+    "text": "Create a report showing Contacts with executive job titles."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Contact Roles on the Opportunity record decision makers, influencers, and other stakeholders per deal, which is exactly what the executives want documented. Primary Contact captures only one person, and a job-title report doesn't tie contacts to specific deals.",
+  "sourceRef": "set6.json Q98",
+  "prevId": 123
+ },
+ {
+  "id": 99,
+  "category": "Consulting Practices",
+  "text": "While implementing partner relationship functionality, the project is falling behind due to stakeholder-driven scope creep. What should the consultant change to avoid this in the future?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Lock scope immediately preventing further scope changes between now and the final delivery."
+   },
+   {
+    "letter": "B",
+    "text": "Implement a formal change management process of review and approval before changes are implemented."
+   },
+   {
+    "letter": "C",
+    "text": "Add more developers to the teams so the additional capacity can meet the demands of additional scope."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Scope creep is controlled with a formal change management process: every new request is reviewed for its impact on timeline, cost and resources and approved before it's built. Locking scope outright ignores legitimate business needs, and adding developers doesn't stop uncontrolled requests.",
+  "sourceRef": "set6.json Q99"
+ },
+ {
+  "id": 100,
+  "category": "Lead & Campaign Management",
+  "text": "Universal Containers wants leads that have been open for over 90 days to be deleted. What should the consultant create?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Omni-Channel flow to delete leads"
+   },
+   {
+    "letter": "B",
+    "text": "Autolaunched flow to delete leads"
+   },
+   {
+    "letter": "C",
+    "text": "Schedule-triggered flow to delete leads"
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "A schedule-triggered flow runs on a set schedule (for example nightly) against the leads that meet its criteria, such as still open and created more than 90 days ago, and deletes them. An autolaunched flow needs something else to start it, and Omni-Channel flows route work items.",
+  "sourceRef": "set6.json Q100"
+ },
+ {
+  "id": 101,
+  "category": "Consulting Practices",
+  "text": "A consultant is beginning a project to implement Collaborative Forecasts. What should be used to gather requirements using an Agile methodology?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Sprints"
+   },
+   {
+    "letter": "B",
+    "text": "Epics"
+   },
+   {
+    "letter": "C",
+    "text": "User stories"
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "In Agile, requirements are captured as user stories (\"As a sales manager, I want … so that …\"), which the team estimates and delivers in sprints. Epics are large bodies of work broken down into stories, and sprints are time-boxes, not requirements.",
+  "sourceRef": "set6.json Q101"
+ },
+ {
+  "id": 102,
+  "category": "Implementation Strategies",
+  "text": "UC is scaling to a significant increase in data volume and user activity and is concerned about performance and data management. What should UC consider to ensure scalability?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Validate the data completeness and accuracy to ensure cleanliness."
+   },
+   {
+    "letter": "B",
+    "text": "Purchase additional data storage."
+   },
+   {
+    "letter": "C",
+    "text": "Evaluate and optimize data model and automations."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: validate data completeness and accuracy so data stays clean as volume grows. Note: for performance at higher data volumes and user activity, Salesforce's scalability guidance centres on the data model (relationships, skew, indexing, archiving) and on efficient automation; the previous bank's variant keyed evaluating and optimizing the data model and automations.",
+  "sourceRef": "set6.json Q102",
+  "review": true,
+  "reviewNote": "Key taken from the sales sets; the previous bank's variant (Q208) keyed \"Evaluate and optimize data model and automations\"."
+ },
+ {
+  "id": 103,
+  "category": "Implementation Strategies",
+  "text": "A fix in a sandbox must go to production ASAP, but sandbox and production are on different Salesforce versions and the fix requires sandbox-version functionality. Which action should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Deploy the changes from version control before the Salesforce Platform upgrade window."
+   },
+   {
+    "letter": "B",
+    "text": "Deploy the changes from the sandbox to production once both environments are on the same version."
+   },
+   {
+    "letter": "C",
+    "text": "Deploy the changes from the sandbox to production concurrently with the Salesforce Platform upgrade."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "A change that relies on functionality from a newer Salesforce version can't be deployed to an org still on the older version, so the fix is deployed once both environments are on the same release. Deploying before or during the upgrade window fails or puts production at risk.",
+  "sourceRef": "set6.json Q103"
+ },
+ {
+  "id": 104,
+  "category": "Opportunity Management",
+  "text": "Cloud Kicks uses Opportunities to track Shoe of the Month club subscriptions; subscribers pay once, monthly, quarterly, or annually. Where should the consultant enable schedules?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "On the Order object"
+   },
+   {
+    "letter": "B",
+    "text": "On the Product object"
+   },
+   {
+    "letter": "C",
+    "text": "On the Opportunity object"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Schedules are a product feature: once quantity and revenue schedules are enabled in Product Schedules Settings and on the subscription product, each opportunity product can carry a one-time, monthly, quarterly or annual schedule. Schedules aren't enabled on the Opportunity or Order object.",
+  "sourceRef": "set6.json Q104"
+ },
+ {
+  "id": 105,
+  "category": "Account & Contact Management",
+  "text": "Large NTO accounts have many contacts. Reps want to see how contacts relate to each other and understand the reporting structure. Which feature should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Contact Hierarchy"
+   },
+   {
+    "letter": "B",
+    "text": "Contact Roles"
+   },
+   {
+    "letter": "C",
+    "text": "Contacts to Multiple Accounts"
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Contact Hierarchy uses the Reports To field to display how contacts on an account relate to each other in an org-chart-style view. Contacts to Multiple Accounts and Contact Roles describe account and deal relationships, not reporting structure.",
+  "sourceRef": "set6.json Q105",
+  "prevId": 156
+ },
+ {
+  "id": 106,
+  "category": "Opportunity Management",
+  "text": "Private sharing model on Accounts. Reps need specific users (different per Opportunity) to qualify Opportunities on their Accounts, and management needs to report on who is assigned. What should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Share Accounts with specific users and their respective teams."
+   },
+   {
+    "letter": "B",
+    "text": "Add specific users as Account Team members with a role that grants Modify All access."
+   },
+   {
+    "letter": "C",
+    "text": "Add specific users as Opportunity Team members with a role that grants Read/Write access."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Opportunity Teams let each rep add the specific users who should work a given opportunity, with Read/Write access to that opportunity, and team membership can be reported on per opportunity. Account Teams or account sharing would open every opportunity on the account to the same people, and Modify All goes far beyond what's needed.",
+  "sourceRef": "set6.json Q106"
+ },
+ {
+  "id": 107,
+  "category": "Data, Reports & Dashboards",
+  "text": "CK requires sales associates to record all interactions with prospects in Salesforce. Which sales metric should a sales manager use to monitor and reinforce the sales strategy?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Activity Tracking"
+   },
+   {
+    "letter": "B",
+    "text": "Lead Status"
+   },
+   {
+    "letter": "C",
+    "text": "Event Monitor"
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Activity tracking (tasks and events logged per rep) is the metric that shows whether associates are recording every prospect interaction as required. Lead Status shows pipeline state, and Event Monitoring is a security/audit feature.",
+  "sourceRef": "set6.json Q107",
+  "prevId": 124
+ },
+ {
+  "id": 108,
+  "category": "Product Knowledge & Integration",
+  "text": "Cloud Kicks has enabled multiple currencies and all rates are set. What is the impact if exchange rates are adjusted?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "All new and existing opportunities will use the new Exchange Rate."
+   },
+   {
+    "letter": "B",
+    "text": "The Exchange Rate on Closed Won opportunities will remain the same."
+   },
+   {
+    "letter": "C",
+    "text": "Exchange Rate changes will be tracked in Opportunity Field History."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "With multiple currencies (and no dated exchange rates), changing a rate updates the converted amounts on all opportunities, open and closed, as well as new ones. Closed opportunities keep their historical rate only under Advanced Currency Management, and rate changes aren't recorded in Opportunity Field History.",
+  "sourceRef": "set6.json Q108"
+ },
+ {
+  "id": 109,
+  "category": "Opportunity Management",
+  "text": "CK has a private Opportunity sharing model and uses Opportunity Teams to extend sharing. How should CK revoke Opportunity Team access on an ad hoc basis?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Remove the team member from all Default Opportunity Teams."
+   },
+   {
+    "letter": "B",
+    "text": "Remove the user's Opportunity Team member."
+   },
+   {
+    "letter": "C",
+    "text": "Build a flow to revoke a team member's access."
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Opportunity Team access is granted per opportunity, so removing the user's Opportunity Team member record from that opportunity revokes their access right away. Changing default opportunity teams only affects future opportunities, and a flow is unnecessary for an ad hoc removal.",
+  "sourceRef": "set6.json Q109"
+ },
+ {
+  "id": 110,
+  "category": "Product Knowledge & Integration",
+  "text": "Cloud Kicks wants to integrate its email system with Sales Cloud and show the last 2 months of emails to its 75 sales reps. What should a consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Sales Cloud Einstein"
+   },
+   {
+    "letter": "B",
+    "text": "Email to Salesforce"
+   },
+   {
+    "letter": "C",
+    "text": "Einstein Activity Capture Standard"
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Einstein Activity Capture Standard is included with Sales Cloud and connects reps' email and calendar accounts so recent emails and events appear on Salesforce activity timelines, which fits 75 reps who need about the last two months of email. Email to Salesforce only logs emails reps forward or BCC, and Sales Cloud Einstein is a paid add-on beyond this need.",
+  "sourceRef": "set6.json Q110"
+ },
+ {
+  "id": 111,
+  "category": "Product Knowledge & Integration",
+  "text": "Customers are frustrated by reps selling them products they recently ordered. Orders are stored in an external ERP; CK wants them as a related list on the Account in real time. Which best practice should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Create a custom product order information object."
+   },
+   {
+    "letter": "B",
+    "text": "Create a report to show product order information."
+   },
+   {
+    "letter": "C",
+    "text": "Implement Salesforce Connect and an external object."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Salesforce Connect exposes the ERP's order data as an external object that can be shown as a related list on Account and is read live from the ERP rather than copied into Salesforce. A custom object needs a batch load and is stale between syncs, and a report can't show data that isn't in Salesforce.",
+  "sourceRef": "set6.json Q111"
+ },
+ {
+  "id": 112,
+  "category": "Sales Life Cycle & Forecasting",
+  "text": "Cloud Kicks enabled territory forecasts. The territory hierarchy has three branches with child territories, and forecast managers may be assigned to a few. Which action can forecast managers perform?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Add a Forecasts tab to the Sales app."
+   },
+   {
+    "letter": "B",
+    "text": "Add territory forecast to the hierarchy."
+   },
+   {
+    "letter": "C",
+    "text": "Share the forecast with any Sales Cloud user."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Forecast managers can share their forecast page with any Sales Cloud user so others (for example executives) can view the territory forecast. Managers don't add territories to the hierarchy, and adding a tab to the app is an admin task, not a forecast-manager capability.",
+  "sourceRef": "set6.json Q112",
+  "prevId": 155
+ },
+ {
+  "id": 113,
+  "category": "Product Knowledge & Integration",
+  "text": "Universal Containers wants to use Call Explorer to gain insights from recorded meetings. What should the company be aware of before enabling it?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Custom Call Explorer actions need to be built before it can be configured."
+   },
+   {
+    "letter": "B",
+    "text": "Call Explorer operates independently of Salesforce Knowledge, requiring no prior setup."
+   },
+   {
+    "letter": "C",
+    "text": "Call Explorer requires the Einstein Conversation Insights permission set to be enabled."
+   }
+  ],
+  "answer": [
+   "C"
+  ],
+  "multi": false,
+  "explanation": "Call Explorer is part of Einstein Conversation Insights, so users need the Einstein Conversation Insights permission set (with ECI enabled and call recordings connected) before they can use it. It doesn't need custom actions built first, and its setup has nothing to do with Salesforce Knowledge.",
+  "sourceRef": "set6.json Q113"
+ },
+ {
+  "id": 114,
+  "category": "Implementation Strategies",
+  "text": "After a project deployment, end users identified several bugs that the project team prioritized. How should a consultant resolve these issues?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Build out the issue resolution release in the staging environment."
+   },
+   {
+    "letter": "B",
+    "text": "Build out the issue resolution release in a development sandbox."
+   },
+   {
+    "letter": "C",
+    "text": "Perform user acceptance testing (UAT) in a development sandbox."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: build the issue-resolution release in the staging environment. Note: fixes normally follow the standard path of building in a development sandbox, testing in staging/UAT and then deploying to production; the previous bank keyed the development-sandbox option. UAT doesn't belong in a development sandbox.",
+  "sourceRef": "set6.json Q114",
+  "prevId": 104,
+  "review": true,
+  "reviewNote": "Key taken from the sales sets; the previous bank (Q104) keyed \"Build out the issue resolution release in a development sandbox\"."
+ },
+ {
+  "id": 115,
+  "category": "Implementation Strategies",
+  "text": "Cloud Kicks has completed its initial implementation and wants to create a culture of continuous improvement. What should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Establish a Center of Excellence (COE)."
+   },
+   {
+    "letter": "B",
+    "text": "Configure an enablement site."
+   },
+   {
+    "letter": "C",
+    "text": "Implement a continuous integration and continuous delivery (CI/CD) deployment pipeline."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "A Center of Excellence brings together business owners, admins and executive sponsors to govern the platform, prioritize enhancements and share best practices, which is how continuous improvement is sustained after go-live. An enablement site or a CI/CD pipeline are tools a COE might use, not the culture-building structure itself.",
+  "sourceRef": "set6.json Q115"
+ },
+ {
+  "id": 116,
+  "category": "Agentforce & AI",
+  "text": "An AI model trained on global data underperforms in regions with specific cultural and language nuances. Which Salesforce trusted AI principle should guide the next steps?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Empowering"
+   },
+   {
+    "letter": "B",
+    "text": "Inclusive"
+   },
+   {
+    "letter": "C",
+    "text": "Responsible"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "The model underperforms for people whose cultural and language nuances weren't well represented, which falls under the Inclusive principle: AI should be trained and tested on diverse, representative data so it serves everyone it affects. Responsible and Empowering cover other parts of Salesforce's trusted AI principles.",
+  "sourceRef": "set6.json Q116"
+ },
+ {
+  "id": 117,
+  "category": "Data, Reports & Dashboards",
+  "text": "CK acquired a shoe distribution partner and wants to migrate its sales and marketing data into CK's Sales Cloud. Which aspect should the consultant consider first?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Role hierarchy and sharing rules set up prior to migration"
+   },
+   {
+    "letter": "B",
+    "text": "Number of marketing campaign licenses required for the migration"
+   },
+   {
+    "letter": "C",
+    "text": "Volume of customer, partner, and prospect data identified prior to migration"
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Exam key: settle the role hierarchy and sharing rules before migrating, so incoming records land with the right owners and visibility and sharing doesn't have to be recalculated afterwards. Note: the previous bank keyed identifying the volume of customer, partner and prospect data first, because data volume drives the migration approach and tooling.",
+  "sourceRef": "set6.json Q117",
+  "prevId": 66,
+  "review": true,
+  "reviewNote": "Key taken from the sales sets; the previous bank (Q66) keyed \"Volume of customer, partner, and prospect data\"."
+ },
+ {
+  "id": 118,
+  "category": "Data, Reports & Dashboards",
+  "text": "Sales managers want a dashboard to track their team's potentially problematic opportunities. Which metric should the consultant recommend?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Opportunities viewed in a certain period of time"
+   },
+   {
+    "letter": "B",
+    "text": "Opportunities that are missing Price Book information"
+   },
+   {
+    "letter": "C",
+    "text": "Opportunities that are missing activities"
+   }
+  ],
+  "answer": [
+   "B"
+  ],
+  "multi": false,
+  "explanation": "Exam key: opportunities missing Price Book information. Note: the usual sign that an opportunity is at risk is a lack of activity, since deals reps aren't working tend to stall; the previous bank's variant keyed opportunities with no recorded activities. Missing price book data is a data-quality gap rather than a deal-risk signal.",
+  "sourceRef": "set6.json Q118",
+  "review": true,
+  "reviewNote": "Contested: opportunities with no activity is the usual at-risk metric. The previous bank's variant (Q243) keyed it."
+ },
+ {
+  "id": 119,
+  "category": "Opportunity Management",
+  "text": "The Cloud Kicks sales team collaborates on opportunities. What should the consultant configure so contributing team members share in the revenue from closed opportunities?",
+  "options": [
+   {
+    "letter": "A",
+    "text": "Enable Opportunity Splits from Setup."
+   },
+   {
+    "letter": "B",
+    "text": "Create a custom field on the Opportunity."
+   },
+   {
+    "letter": "C",
+    "text": "Create child opportunities using Quick Actions."
+   }
+  ],
+  "answer": [
+   "A"
+  ],
+  "multi": false,
+  "explanation": "Opportunity Splits, enabled from Setup, let team members share credit for an opportunity's revenue (revenue splits that total 100%, or overlay splits for supporting roles), and the splits roll into reports and forecasts. A custom field or child opportunities would need custom logic and break forecasting.",
+  "sourceRef": "set6.json Q119"
+ }
+]
