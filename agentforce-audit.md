@@ -1,5 +1,13 @@
 # Agentforce Specialist Question Bank — Verification vs. PDF Sources
 
+> **2026-09-25 — bank rebuilt from `download.pdf`.** At the user's request `agentforce.json` was remade from `datasets/source-snapshots/agentforce/download.pdf` ("Agentforce Specialist · Master Question Bank", 48 image-only pages, 131 questions, no explanations). The 368-question bank described below is preserved at `datasets/source-snapshots/agentforce/agentforce.pre-download-pdf.json`.
+>
+> **Pipeline** (`tools/build_agentforce_from_pdf.py`): pages rendered with `pdftoppm` at 200 dpi → OCR with `tesseract --psm 4` → parsed on `Question N` / `A.–C.` / `Answer: X` → matched to the previous bank by stem and option similarity. OCR quality was high; a handful of artefacts were corrected (`Al`→`AI`, `Agenttorce`, `turn-by-tum`, border glyphs, `Cc.`).
+>
+> **Result: 123 questions.** The PDF repeats 11 questions; 8 identical copies were dropped (Q8, 28, 57, 95, 97, 112, 130, 131) and 3 pairs that key *different* answers were kept and flagged (Q10/Q119, Q21/Q92). Q38 is printed with only two options. 108 questions overlap the previous bank (their audited explanations were reused); 15 are new (fresh explanations); 12 keep the PDF's key where the previous bank disagreed — each of those explanations states the exam key and notes where Salesforce documentation points elsewhere (Q3/8, 11, 21, 23, 43, 67, 73, 77, 81, 94, 109 in PDF numbering). Every question carries `sourceRef` (PDF question/page) and, where applicable, `prevId` (id in the previous bank).
+>
+> **Provenance caveat.** Trailing text on page 32 ("Due to length, I can continue from Question 87…") shows the PDF was compiled from an AI-chat transcript, so its keys are no more authoritative than a dump's; contested items are review-marked.
+
 Verifies `agentforce.json` against the three PDFs in `datasets/source-snapshots/agentforce/` (2026-09-11).
 
 ## Sources
