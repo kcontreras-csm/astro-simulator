@@ -3022,7 +3022,8 @@ const state = {
   flagged: {},    // { questionId: true } — "review later" flags, persisted separately
   timerInterval: null,
   timerSeconds: exam.examMinutes * 60,
-  examSubmitted: false
+  examSubmitted: false,
+  examQuestions: null // exam mode: the random 65–70 question draw; null in study mode
 };
 
 // ---------- Category-to-Tab mapping (rebuilt per exam by configureExam) ----------
@@ -3042,6 +3043,39 @@ function questionsInCategory(cat) {
   if (cat === FLAGGED_CATEGORY) return QUESTIONS.filter(q => state.flagged[q.id]);
   return QUESTIONS.filter(q => q.category === cat);
 }
+// ---------- Exam draw ----------
+// A timed exam uses a random 65–70 question subset of the bank (like the real exams:
+// 60 scored + ~5 unscored), split across sections in proportion to each section's
+// share of the bank so every section is represented. A new draw on every exam start.
+const EXAM_DRAW_MIN = 65, EXAM_DRAW_MAX = 70;
+
+function drawExamQuestions() {
+  const target = Math.min(QUESTIONS.length,
+    EXAM_DRAW_MIN + Math.floor(Math.random() * (EXAM_DRAW_MAX - EXAM_DRAW_MIN + 1)));
+  const byCat = {};
+  QUESTIONS.forEach(q => (byCat[q.category] = byCat[q.category] || []).push(q));
+  // Largest-remainder apportionment so the per-section counts add up to the target
+  const cats = Object.keys(byCat).map(cat => {
+    const exact = target * byCat[cat].length / QUESTIONS.length;
+    return { cat, n: Math.floor(exact), rem: exact - Math.floor(exact) };
+  });
+  let left = target - cats.reduce((sum, c) => sum + c.n, 0);
+  cats.slice().sort((a, b) => b.rem - a.rem).forEach(c => {
+    if (left > 0 && c.n < byCat[c.cat].length) { c.n++; left--; }
+  });
+  return shuffleArray(cats.flatMap(c => shuffleArray([...byCat[c.cat]]).slice(0, c.n)));
+}
+
+// Questions in play: the exam draw during a timed exam, otherwise the whole bank
+function activeQuestions() {
+  return state.mode === "exam" && state.examQuestions ? state.examQuestions : QUESTIONS;
+}
+function activeInCategory(cat) {
+  if (!(state.mode === "exam" && state.examQuestions)) return questionsInCategory(cat);
+  const ids = new Set(state.examQuestions.map(q => q.id));
+  return questionsInCategory(cat).filter(q => ids.has(q.id));
+}
+
 function flaggedTabIndex() { return TAB_CATEGORIES.indexOf(FLAGGED_CATEGORY); }
 
 // Re-render the Flagged tab, its tab badge, progress line, and dashboard row after
@@ -3049,7 +3083,7 @@ function flaggedTabIndex() { return TAB_CATEGORIES.indexOf(FLAGGED_CATEGORY); }
 function refreshFlaggedTab() {
   const i = flaggedTabIndex();
   if (i < 0) return;
-  const qs = questionsInCategory(FLAGGED_CATEGORY);
+  const qs = activeInCategory(FLAGGED_CATEGORY);
   renderQuizTab(i, FLAGGED_CATEGORY, qs);
   restoreSubmittedState(i);
   renderTabButtons();
@@ -3914,6 +3948,7 @@ window.enterExam = async function(id) {
   const modeToggle = $("#mode-toggle"); if (modeToggle) modeToggle.checked = false;
   state.mode = "study";
   state.examSubmitted = false;
+  state.examQuestions = null;
 
   const resolved = await resolveBank(cfg);
   setActiveExam(resolved.cfg.id);
@@ -3962,10 +3997,10 @@ function renderTabButtons() {
 
     let countBadge = "";
     if (i > 0 && i < FULL_EXAM_TAB) {
-      const count = questionsInCategory(TAB_CATEGORIES[i]).length;
+      const count = activeInCategory(TAB_CATEGORIES[i]).length;
       countBadge = `<span class="tab-badge">${count}</span>`;
     } else if (i === FULL_EXAM_TAB) {
-      countBadge = `<span class="tab-badge">${QUESTIONS.length}</span>`;
+      countBadge = `<span class="tab-badge">${activeQuestions().length}</span>`;
     }
 
     btn.innerHTML = `${tab.icon || ""}${tab.label}${countBadge}`;
@@ -4011,7 +4046,7 @@ function renderDashboard() {
             <div class="stat-label">Passing Score</div>
           </div>
         </div>
-        <p style="font-size:.8rem;color:var(--text-muted);">Multiple-choice and multi-select format. Question bank generated from datasets/ — run tools/parse_datasets.py after adding new source files. Answer keys and explanations audited against Salesforce documentation.</p>
+        <p style="font-size:.8rem;color:var(--text-muted);">Multiple-choice and multi-select format. Exam mode draws a random ${EXAM_DRAW_MIN}–${EXAM_DRAW_MAX} questions across all sections. Question bank generated from datasets/ — run tools/parse_datasets.py after adding new source files. Answer keys and explanations audited against Salesforce documentation.</p>
       </div>
 
       <div class="dash-card">
@@ -4058,20 +4093,20 @@ function renderAllQuizTabs() {
   // Tabs 1-6: Category-filtered
   for (let i = 1; i < FULL_EXAM_TAB; i++) {
     const cat = TAB_CATEGORIES[i];
-    const questions = questionsInCategory(cat);
+    const questions = activeInCategory(cat);
     renderQuizTab(i, cat, questions);
   }
   // Full exam tab (shuffled copy)
-  const shuffled = shuffleArray([...QUESTIONS]);
+  const shuffled = shuffleArray([...activeQuestions()]);
   renderQuizTab(FULL_EXAM_TAB, "Full Exam Simulator", shuffled);
 }
 
 function getTabQuestions(tabIndex) {
   if (tabIndex === FULL_EXAM_TAB) {
-    return [...QUESTIONS];
+    return [...activeQuestions()];
   }
   const cat = TAB_CATEGORIES[tabIndex];
-  return questionsInCategory(cat);
+  return activeInCategory(cat);
 }
 
 // Return a shallow copy of a question with its options in random order.
@@ -4324,8 +4359,9 @@ function updateScoreMatrix() {
   const scorePill = $("#pill-score");
 
   if (progressPill) {
-    progressPill.querySelector(".pill-value").textContent = `${totalAnswered}/${QUESTIONS.length}`;
-    progressPill.style.setProperty("--p", QUESTIONS.length ? totalAnswered / QUESTIONS.length : 0);
+    const total = activeQuestions().length;
+    progressPill.querySelector(".pill-value").textContent = `${totalAnswered}/${total}`;
+    progressPill.style.setProperty("--p", total ? totalAnswered / total : 0);
   }
   if (scorePill) {
     scorePill.querySelector(".pill-value").textContent = `${score}%`;
@@ -4350,7 +4386,7 @@ function updateScoreMatrix() {
 function updateTabProgress() {
   for (let i = 1; i < FULL_EXAM_TAB; i++) {
     const cat = TAB_CATEGORIES[i];
-    const questions = questionsInCategory(cat);
+    const questions = activeInCategory(cat);
     const answered = questions.filter(q => state.submitted[q.id]).length;
     const el = $(`#progress-${i}`);
     if (el) el.textContent = `${answered} / ${questions.length} Answered`;
@@ -4358,7 +4394,7 @@ function updateTabProgress() {
   // Full exam tab
   const allAnswered = Object.keys(state.submitted).length;
   const elFull = $(`#progress-${FULL_EXAM_TAB}`);
-  if (elFull) elFull.textContent = `${allAnswered} / ${QUESTIONS.length} Answered`;
+  if (elFull) elFull.textContent = `${allAnswered} / ${activeQuestions().length} Answered`;
 }
 
 // ---------- Answer key view ----------
@@ -4408,8 +4444,10 @@ function toggleMode(isExam) {
     state.submitted = {};
     state.examSubmitted = false;
     state.timerSeconds = exam.examMinutes * 60;
+    state.examQuestions = drawExamQuestions();
 
-    // Re-render quiz tabs
+    // Re-render tabs for the draw
+    renderTabButtons();
     renderAllQuizTabs();
     updateScoreMatrix();
     updateSessionStatus();
@@ -4422,7 +4460,9 @@ function toggleMode(isExam) {
     // Switch to full exam tab
     setActiveTab(FULL_EXAM_TAB);
   } else {
-    // Back to study mode: restore the saved study session (if any)
+    // Back to study mode: restore the saved study session (if any) and the full bank
+    state.examQuestions = null;
+    renderTabButtons();
     loadSession();
 
     stopTimer();
@@ -4481,7 +4521,8 @@ function submitExam() {
     sectionResults[cat] = { total: 0, correct: 0 };
   });
 
-  QUESTIONS.forEach(q => {
+  const examQs = activeQuestions();
+  examQs.forEach(q => {
     if (!sectionResults[q.category]) sectionResults[q.category] = { total: 0, correct: 0 };
     sectionResults[q.category].total++;
     const userAnswers = state.answers[q.id] || [];
@@ -4492,7 +4533,7 @@ function submitExam() {
   });
 
   const totalAnswered = Object.keys(state.submitted).length;
-  const score = QUESTIONS.length > 0 ? ((totalCorrect / QUESTIONS.length) * 100).toFixed(1) : "0.0";
+  const score = examQs.length > 0 ? ((totalCorrect / examQs.length) * 100).toFixed(1) : "0.0";
   const passed = parseFloat(score) >= exam.passingScore;
 
   // Show results modal
@@ -4526,7 +4567,7 @@ function showResultsModal(answered, correct, score, passed, sections) {
 
     <div class="results-breakdown">
       <div class="result-stat ${passed ? 'pass' : 'fail'}">
-        <div class="rs-value">${correct}/${QUESTIONS.length}</div>
+        <div class="rs-value">${correct}/${activeQuestions().length}</div>
         <div class="rs-label">Correct</div>
       </div>
       <div class="result-stat">
@@ -4534,7 +4575,7 @@ function showResultsModal(answered, correct, score, passed, sections) {
         <div class="rs-label">Answered</div>
       </div>
       <div class="result-stat">
-        <div class="rs-value">${QUESTIONS.length - answered}</div>
+        <div class="rs-value">${activeQuestions().length - answered}</div>
         <div class="rs-label">Unanswered</div>
       </div>
       <div class="result-stat ${passed ? 'pass' : 'fail'}">
