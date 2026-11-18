@@ -3030,10 +3030,14 @@ const state = {
 let TAB_CATEGORIES = [null, ...CATEGORY_LIST, null];
 let FULL_EXAM_TAB = TAB_CATEGORIES.length - 1;
 
-// Virtual "Flagged" category: every question the user has flagged with the 🚩 button
+// Virtual "Flagged" category: every question the user has flagged with the flag button
 // in the current exam. Present on every exam (flags are stored per exam); the
 // questions keep their real category for scoring and results.
-const FLAGGED_CATEGORY = "🚩 Flagged";
+const FLAGGED_CATEGORY = "Flagged";
+// Category as shown in tabs, headings and pickers (the Flagged tab gets its icon)
+function catLabel(cat) {
+  return cat === FLAGGED_CATEGORY ? `${icon("flag")}${cat}` : cat;
+}
 function questionsInCategory(cat) {
   if (cat === FLAGGED_CATEGORY) return QUESTIONS.filter(q => state.flagged[q.id]);
   return QUESTIONS.filter(q => q.category === cat);
@@ -3139,18 +3143,13 @@ function restoreAllTabs() {
   }
 }
 
+// Reset is only meaningful in study mode with saved answers. (The "N saved" chip that
+// used to sit next to it was removed — the Progress readout shows the same count.)
 function updateSessionStatus() {
-  const el = $("#session-status");
   const resetBtn = $("#btn-reset-session");
-  if (!el) return;
+  if (!resetBtn) return;
   const answered = Object.keys(state.submitted).length;
-  if (state.mode === "study" && answered > 0) {
-    el.textContent = `💾 ${answered} saved`;
-    if (resetBtn) resetBtn.disabled = false;
-  } else {
-    el.textContent = "";
-    if (resetBtn) resetBtn.disabled = state.mode !== "study";
-  }
+  resetBtn.disabled = !(state.mode === "study" && answered > 0);
 }
 
 window.resetSession = function() {
@@ -3205,7 +3204,6 @@ window.toggleFlag = function(qid, ev) {
   else state.flagged[qid] = true;
   saveFlags();
   syncFlag(qid);
-  updateFlagStatus();
   refreshFlaggedTab();
 };
 
@@ -3223,15 +3221,6 @@ function syncFlag(qid) {
   });
 }
 
-function updateFlagStatus() {
-  const el = $("#flag-status");
-  if (!el) return;
-  const n = Object.keys(state.flagged).length;
-  el.textContent = n ? `🚩 ${n} flagged` : "";
-  el.title = n ? "Open the Flagged tab" : "";
-  el.classList.toggle("has-flags", n > 0);
-}
-
 window.clearFlags = function() {
   const n = Object.keys(state.flagged).length;
   if (!n) return;
@@ -3240,13 +3229,12 @@ window.clearFlags = function() {
   state.flagged = {};
   saveFlags();
   ids.forEach(id => syncFlag(id));
-  updateFlagStatus();
   refreshFlaggedTab();
 };
 
 function flagButtonHTML(qid) {
   const on = !!state.flagged[qid];
-  return `<button type="button" class="btn-flag${on ? " flagged" : ""}" data-flag="${qid}" aria-pressed="${on}" title="${on ? "Flagged for review — click to unflag" : "Flag this question for review"}" onclick="toggleFlag(${qid}, event)">🚩</button>`;
+  return `<button type="button" class="btn-flag${on ? " flagged" : ""}" data-flag="${qid}" aria-pressed="${on}" title="${on ? "Flagged for review — click to unflag" : "Flag this question for review"}" onclick="toggleFlag(${qid}, event)" aria-label="Flag for review">${icon("flag")}</button>`;
 }
 
 // ---------- Theme (accent + light/dark) ----------
@@ -3303,6 +3291,8 @@ window.toggleThemeMenu = function(force) {
   if (!menu) return;
   const show = force === undefined ? menu.classList.contains("hidden") : force;
   menu.classList.toggle("hidden", !show);
+  const btn = $("#theme-btn");
+  if (btn) btn.setAttribute("aria-expanded", show ? "true" : "false");
 };
 
 // ---------- Rapid Fire mode ----------
@@ -3311,6 +3301,7 @@ window.toggleThemeMenu = function(force) {
 const rapid = {
   active: false,
   mode: null,        // null while the picker is shown, then "endless" | "knockout"
+  section: null,     // category to drill (incl. the Flagged tab), or null for the whole exam
   pool: [],          // base question objects for this session
   remaining: null,   // knockout: Set of question ids not yet mastered
   queue: [],         // current shuffled batch to draw from
@@ -3325,6 +3316,17 @@ const rapid = {
   selected: []
 };
 
+// Questions for the chosen section (null = whole exam). Sections that no longer
+// exist in the current exam, or are empty, fall back to the whole exam.
+function rapidPool(section) {
+  if (!section || !TAB_CATEGORIES.includes(section)) return QUESTIONS;
+  const qs = questionsInCategory(section);
+  return qs.length ? qs : QUESTIONS;
+}
+function rapidSectionLabel() {
+  return rapid.section && rapid.pool !== QUESTIONS ? rapid.section : "All sections";
+}
+
 // ---------- Knockout session recovery ----------
 // A Knockout run is saved to localStorage after every answer so an accidental
 // reload or tab close can be resumed. (Endless is not saved — it has no end
@@ -3338,6 +3340,7 @@ function saveKnockout() {
   try {
     localStorage.setItem(knockoutKey(), JSON.stringify({
       version: 1,
+      section: rapid.pool === QUESTIONS ? null : rapid.section,
       remaining: Array.from(rapid.remaining),
       seen: rapid.seen,
       correct: rapid.correct,
@@ -3363,6 +3366,7 @@ function loadKnockout() {
     const remaining = new Set(d.remaining.filter(id => valid.has(id)));
     if (remaining.size === 0) return null; // nothing left to resume / stale
     return {
+      section: typeof d.section === "string" ? d.section : null,
       remaining,
       seen: d.seen | 0,
       correct: d.correct | 0,
@@ -3388,7 +3392,7 @@ function hasKnockout() {
   return loadKnockout() !== null;
 }
 
-// Small pulsing dot on the ⚡ Rapid Fire button when a session can be resumed
+// Small pulsing dot on the Rapid Fire button when a session can be resumed
 function updateRapidResumeHint() {
   const btn = $("#btn-rapid-launch");
   if (btn) btn.classList.toggle("has-resume", hasKnockout());
@@ -3399,8 +3403,11 @@ window.resumeKnockout = function() {
   if (!saved) { rapidRenderPicker(); return; }
   rapid.active = true;
   rapid.mode = "knockout";
-  rapid.pool = QUESTIONS;
-  rapid.remaining = saved.remaining;
+  rapid.section = saved.section;
+  rapid.pool = rapidPool(saved.section);
+  const inPool = new Set(rapid.pool.map(q => q.id));
+  rapid.remaining = new Set([...saved.remaining].filter(id => inPool.has(id)));
+  if (rapid.remaining.size === 0) { clearKnockout(); rapidRenderPicker(); return; }
   rapid.seen = saved.seen;
   rapid.correct = saved.correct;
   rapid.mastered = saved.mastered;
@@ -3412,10 +3419,13 @@ window.resumeKnockout = function() {
 };
 
 // The header button opens Rapid Fire on a mode-picker screen.
-window.startRapid = function() {
+window.startRapid = function(section) {
   rapid.active = true;
   rapid.mode = null;
   rapid.done = false;
+  // Default to the section tab the user is on (Dashboard / Full Exam = all)
+  const tabCat = TAB_CATEGORIES[state.activeTab] || null;
+  rapid.section = section !== undefined ? section : tabCat;
   const overlay = $("#rapid-overlay");
   if (overlay) overlay.classList.add("visible");
   document.body.classList.add("rapid-open");
@@ -3432,7 +3442,7 @@ window.beginRapid = function(mode) {
     clearKnockout();
   }
   rapid.mode = mode === "knockout" ? "knockout" : "endless";
-  rapid.pool = QUESTIONS;
+  rapid.pool = rapidPool(rapid.section);
   rapid.seen = 0;
   rapid.correct = 0;
   rapid.mastered = 0;
@@ -3467,12 +3477,12 @@ function rapidCurrent() {
 function rapidTallyHTML() {
   let stat;
   if (rapid.mode === "knockout") {
-    stat = `✅ ${rapid.mastered}/${rapid.pool.length} mastered`;
+    stat = `${icon("circle-check")}${rapid.mastered}/${rapid.pool.length} mastered`;
   } else {
     const acc = rapid.seen ? Math.round((rapid.correct / rapid.seen) * 100) : 0;
     stat = `${rapid.correct}/${rapid.seen} correct${rapid.seen ? ` · ${acc}%` : ""}`;
   }
-  const streak = `<span class="rapid-streak${rapid.streak >= 3 ? " hot" : ""}" title="Current streak${rapid.bestStreak ? ` · best ${rapid.bestStreak}` : ""}">🔥 ${rapid.streak}</span>`;
+  const streak = `<span class="rapid-streak${rapid.streak >= 3 ? " hot" : ""}" title="Current streak${rapid.bestStreak ? ` · best ${rapid.bestStreak}` : ""}">${icon("flame")}${rapid.streak}</span>`;
   return `${stat} ${streak}`;
 }
 
@@ -3482,32 +3492,52 @@ function rapidRenderPicker() {
   const saved = loadKnockout();
   const resumeCard = saved ? `
     <button type="button" class="rapid-resume-card" onclick="resumeKnockout()">
-      <span class="rrc-icon">↩️</span>
+      <span class="rrc-icon">${icon("undo")}</span>
       <span class="rrc-text">
-        <strong>Resume Knockout</strong>
+        <strong>Resume Knockout${saved.section ? ` · ${saved.section}` : ""}</strong>
         <span>Continue your saved session — ${saved.mastered} mastered, ${saved.remaining.size} to go.</span>
       </span>
     </button>` : "";
+  // Section chips: whole exam, each section with questions, and Flagged when non-empty
+  const sections = TAB_CATEGORIES.filter(c => c && questionsInCategory(c).length);
+  if (rapid.section && !sections.includes(rapid.section)) rapid.section = null;
+  const pool = rapidPool(rapid.section);
+  const chip = (i, sec, n) => `
+    <button type="button" class="rapid-section-chip${rapid.section === sec ? " active" : ""}"
+      onclick="setRapidSection(${i})">${sec ? catLabel(sec) : "All sections"}<span class="rsc-count">${n}</span></button>`;
+  const sectionChips = `
+    <div class="rapid-sections" role="group" aria-label="Section to drill">
+      ${chip(-1, null, QUESTIONS.length)}
+      ${sections.map((sec, i) => chip(i, sec, questionsInCategory(sec).length)).join("")}
+    </div>`;
   body.innerHTML = `
     <div class="rapid-picker">
-      <h2 class="rapid-picker-title">⚡ Rapid Fire</h2>
-      <p class="rapid-picker-sub">Choose a drill mode</p>
+      <h2 class="rapid-picker-title">${icon("zap")}Rapid Fire</h2>
+      <p class="rapid-picker-sub">Choose a section, then a drill mode</p>
       ${resumeCard}
+      ${sectionChips}
       <div class="rapid-mode-cards">
         <button type="button" class="rapid-mode-card" onclick="beginRapid('endless')">
-          <span class="rmc-icon">♾️</span>
+          <span class="rmc-icon">${icon("infinity")}</span>
           <span class="rmc-name">Endless</span>
           <span class="rmc-desc">Random questions, one after another, forever. Nothing is removed — practice at your own pace. <kbd>1</kbd></span>
         </button>
         <button type="button" class="rapid-mode-card" onclick="beginRapid('knockout')">
-          <span class="rmc-icon">🎯</span>
+          <span class="rmc-icon">${icon("target")}</span>
           <span class="rmc-name">Knockout</span>
-          <span class="rmc-desc">Get one right and it drops out of the pool; miss it and it stays. Clear all ${QUESTIONS.length} to win. <kbd>2</kbd></span>
+          <span class="rmc-desc">Get one right and it drops out of the pool; miss it and it stays. Clear all ${pool.length} to win. <kbd>2</kbd></span>
         </button>
       </div>
     </div>
   `;
 }
+
+// Picker chip: index into the picker's section list (-1 = whole exam)
+window.setRapidSection = function(i) {
+  const sections = TAB_CATEGORIES.filter(c => c && questionsInCategory(c).length);
+  rapid.section = sections[i] || null;
+  rapidRenderPicker();
+};
 
 function rapidRenderDone() {
   const body = $("#rapid-body");
@@ -3517,11 +3547,11 @@ function rapidRenderDone() {
   const acc = rapid.seen ? Math.round((rapid.correct / rapid.seen) * 100) : 0;
   body.innerHTML = `
     <div class="rapid-done">
-      <div class="rapid-done-icon">🏆</div>
+      <div class="rapid-done-icon">${icon("trophy")}</div>
       <h2>Knockout complete!</h2>
-      <p>You cleared all ${rapid.pool.length} questions. It took ${rapid.seen} attempts at ${acc}% accuracy · longest streak 🔥 ${rapid.bestStreak}.</p>
+      <p>You cleared all ${rapid.pool.length} questions in ${rapidSectionLabel()}. It took ${rapid.seen} attempts at ${acc}% accuracy · longest streak ${rapid.bestStreak}.</p>
       <div class="rapid-done-actions">
-        <button type="button" class="btn-rapid-next" onclick="startRapid()">Play again</button>
+        <button type="button" class="btn-rapid-next" onclick="startRapid(rapid.section)">Play again</button>
         <button type="button" class="btn-rapid-check" onclick="exitRapid()">Done</button>
       </div>
     </div>
@@ -3540,7 +3570,7 @@ function rapidRender() {
 
   body.innerHTML = `
     <div class="rapid-tally">
-      <span>${rapid.mode === "knockout" ? "🎯 Knockout" : "♾️ Endless"}</span>
+      <span class="rapid-tally-mode">${rapid.mode === "knockout" ? `${icon("target")}Knockout` : `${icon("infinity")}Endless`} <span class="rapid-tally-section">· ${catLabel(rapidSectionLabel())}</span></span>
       <span class="rapid-score">${rapidTallyHTML()}</span>
     </div>
     <div class="rapid-qmeta">
@@ -3561,7 +3591,7 @@ function rapidRender() {
     <div class="rapid-feedback" id="rapid-feedback"></div>
     <div class="rapid-actions">
       ${isMulti ? `<button type="button" class="btn-rapid-check" id="rapid-check" disabled onclick="rapidReveal()">Check</button>` : ""}
-      <button type="button" class="btn-rapid-next hidden" id="rapid-next" onclick="rapidNext()">Next →</button>
+      <button type="button" class="btn-rapid-next hidden" id="rapid-next" onclick="rapidNext()">Next${icon("arrow-right", "ico-end")}</button>
     </div>
   `;
   syncFlag(q.id);
@@ -3615,10 +3645,10 @@ window.rapidReveal = function() {
 
   let verdict;
   if (isCorrect) {
-    verdict = rapid.mode === "knockout" ? "✓ Correct — knocked out!" : "✓ Correct";
-    if (rapid.streak >= 2) verdict += ` · 🔥 ${rapid.streak} streak`;
+    verdict = icon("circle-check") + (rapid.mode === "knockout" ? "Correct — knocked out!" : "Correct");
+    if (rapid.streak >= 2) verdict += ` · ${icon("flame")}${rapid.streak} streak`;
   } else {
-    verdict = rapid.mode === "knockout" ? "✕ Incorrect — it'll come back" : "✕ Incorrect";
+    verdict = icon("circle-x") + (rapid.mode === "knockout" ? "Incorrect — it'll come back" : "Incorrect");
   }
 
   const fb = $("#rapid-feedback");
@@ -3626,7 +3656,7 @@ window.rapidReveal = function() {
     fb.className = `rapid-feedback visible ${isCorrect ? "is-correct" : "is-incorrect"}`;
     fb.innerHTML = `
       <div class="rapid-verdict">${verdict}</div>
-      ${q.hook ? `<div class="answer-hook"><span class="hook-key">🔑 Key</span><span class="hook-text">${q.hook}</span></div>` : ""}
+      ${q.hook ? `<div class="answer-hook"><span class="hook-key">${icon("key")}Key</span><span class="hook-text">${q.hook}</span></div>` : ""}
     `;
   }
   const check = $("#rapid-check");
@@ -3634,7 +3664,7 @@ window.rapidReveal = function() {
   const next = $("#rapid-next");
   if (next) {
     const cleared = rapid.mode === "knockout" && rapid.remaining && rapid.remaining.size === 0;
-    next.textContent = cleared ? "See results →" : "Next →";
+    next.innerHTML = `${cleared ? "See results" : "Next"}${icon("arrow-right", "ico-end")}`;
     next.classList.remove("hidden");
     next.focus();
   }
@@ -3837,8 +3867,8 @@ function renderHome() {
     const nQuestions = examRegistry.reduce((sum, e) =>
       sum + (e.id === DEFAULT_EXAM_ID ? EMBEDDED_QUESTIONS.length : (e.count || 0)), 0);
     statsEl.innerHTML =
-      `<span class="home-stat">📚 ${nExams} exam${nExams === 1 ? "" : "s"}</span>` +
-      (nQuestions ? `<span class="home-stat">🎯 ${nQuestions} questions to master</span>` : "");
+      `<span class="home-stat">${icon("book")}${nExams} exam${nExams === 1 ? "" : "s"}</span>` +
+      (nQuestions ? `<span class="home-stat">${icon("target")}${nQuestions} questions to master</span>` : "");
   }
 
   const grid = $("#home-tiles");
@@ -3854,12 +3884,12 @@ function renderHome() {
           ${e.code ? `<div class="tile-code">${e.code}</div>` : ""}
           <div class="tile-name">${e.name}</div>
           <div class="tile-meta">
-            ${count ? `<span>📚 ${count} questions</span>` : ""}
-            ${cats ? `<span>🗂️ ${cats} domains</span>` : ""}
-            ${e.passingScore ? `<span>🎯 ${e.passingScore}% to pass</span>` : ""}
+            ${count ? `<span>${icon("book")}${count} questions</span>` : ""}
+            ${cats ? `<span>${icon("folders")}${cats} domains</span>` : ""}
+            ${e.passingScore ? `<span>${icon("target")}${e.passingScore}% to pass</span>` : ""}
           </div>
         </div>
-        <span class="tile-cta">${resume ? "Continue →" : "Start studying →"}</span>
+        <span class="tile-cta">${resume ? "Continue" : "Start studying"}${icon("arrow-right", "ico-end")}</span>
       </button>
     `;
   }).join("");
@@ -3899,8 +3929,8 @@ window.enterExam = async function(id) {
   restoreAllTabs();
   updateScoreMatrix();
   updateSessionStatus();
-  updateFlagStatus();
   updateRapidResumeHint();
+  applyAnswerKey();
 
   document.body.classList.add("in-exam");
   setActiveTab(0);
@@ -3921,9 +3951,9 @@ function renderTabButtons() {
   const nav = $(".tab-nav");
   nav.innerHTML = "";
   // Dashboard, one tab per category, then Full Exam — built from the exam config
-  const tabs = [{ label: "Dashboard", icon: "📊" }];
-  CATEGORY_LIST.forEach(cat => tabs.push({ label: cat }));
-  tabs.push({ label: `Full Exam (${QUESTIONS.length})`, icon: "🎯" });
+  const tabs = [{ label: "Dashboard", icon: icon("dashboard") }];
+  CATEGORY_LIST.forEach(cat => tabs.push({ label: catLabel(cat) }));
+  tabs.push({ label: "Full Exam", icon: icon("layers") });
 
   tabs.forEach((tab, i) => {
     const btn = document.createElement("button");
@@ -3965,7 +3995,7 @@ function renderDashboard() {
   pane.innerHTML = `
     <div class="dashboard-grid">
       <div class="dash-card">
-        <h2>📋 Exam Overview</h2>
+        <h2>${icon("clipboard")}Exam Overview</h2>
         <p>${exam.name}${exam.code ? ` · ${exam.code}` : ""}</p>
         <div class="stat-row">
           <div class="stat-box">
@@ -3985,7 +4015,7 @@ function renderDashboard() {
       </div>
 
       <div class="dash-card">
-        <h2>🎯 Your Progress</h2>
+        <h2>${icon("gauge")}Your Progress</h2>
         <p>Track your study progress across all sections.</p>
         <div class="stat-row">
           <div class="stat-box">
@@ -4004,14 +4034,14 @@ function renderDashboard() {
       </div>
 
       <div class="dash-card full-width">
-        <h3>📚 Exam Domain Breakdown</h3>
+        <h3>${icon("book")}Exam Domain Breakdown</h3>
         <p>Check off domains as you study to track your coverage.</p>
         <ul class="topic-checklist">
           ${topicList.map(t => `
             <li>
               <input type="checkbox" id="chk-${t.name.replace(/\W/g,'-')}">
               <div>
-                <strong>${t.name}</strong><br>
+                <strong>${catLabel(t.name)}</strong><br>
                 <span style="font-size:.78rem;color:var(--text-muted)" data-topic-text="${t.name}">${t.name === FLAGGED_CATEGORY ? `${t.count} flagged question${t.count === 1 ? "" : "s"}` : `${t.count} practice questions`}</span>
               </div>
               <span class="topic-weight" data-topic-count="${t.name}">${t.count}</span>
@@ -4102,7 +4132,7 @@ function restoreSubmittedState(tabIndex) {
     } else {
       const btn = card.querySelector(`[id="submit-${qid}"]`);
       if (btn) {
-        btn.textContent = '✓ Saved';
+        btn.innerHTML = `${icon("check")}Saved`;
         btn.disabled = true;
         btn.classList.remove('primary');
         btn.classList.add('secondary');
@@ -4121,15 +4151,19 @@ function renderQuizTab(tabIndex, title, questions) {
   if (!pane) return;
 
   const isFlaggedTab = title === FLAGGED_CATEGORY;
-  const shuffleBtn = questions.length > 1 ? `<button class="btn-shuffle" onclick="shuffleTab(${tabIndex})" title="Shuffle the order of questions and of each question's answers">🔀 Shuffle</button>` : "";
-  const clearBtn = isFlaggedTab && questions.length ? `<button class="btn-shuffle" onclick="clearFlags()" title="Remove every flag in this exam">🗑️ Clear flags</button>` : "";
+  const shuffleBtn = questions.length > 1 ? `<button class="btn-shuffle" onclick="shuffleTab(${tabIndex})" title="Shuffle the order of questions and of each question's answers">${icon("shuffle")}Shuffle</button>` : "";
+  const clearBtn = isFlaggedTab && questions.length ? `<button class="btn-shuffle" onclick="clearFlags()" title="Remove every flag in this exam">${icon("trash")}Clear flags</button>` : "";
   const emptyNote = isFlaggedTab
-    ? `<p class="empty-note">No flagged questions yet. Click 🚩 on any question in this exam and it will show up here.</p>`
+    ? `<p class="empty-note">No flagged questions yet. Click ${icon("flag")} on any question in this exam and it will show up here.</p>`
     : `<p class="empty-note">No questions in this section.</p>`;
+
+  // Inside a section tab every card would repeat the tab's name — hide the per-card
+  // category pill there; Full Exam and Flagged mix sections, so they keep it.
+  pane.classList.toggle("in-section", tabIndex < FULL_EXAM_TAB && !isFlaggedTab);
 
   pane.innerHTML = `
     <div class="section-header">
-      <h2>${title}</h2>
+      <h2>${catLabel(title)}</h2>
       <div class="section-header-actions">
         ${clearBtn}
         ${shuffleBtn}
@@ -4152,7 +4186,7 @@ function renderQuestionCard(q, num) {
           <div class="question-meta">
             <span class="q-cat">${q.category}</span>
             ${q.source ? `<span class="q-src" title="${q.sourceRef || q.source}">${q.source}</span>` : ''}
-            ${q.review ? `<span class="review-badge" title="This answer key was contested during the bank audit — see the note in the explanation">⚠ Key contested</span>` : ''}
+            ${q.review ? `<span class="review-badge" title="This answer key was contested during the bank audit — see the note in the explanation">${icon("alert")}Key contested</span>` : ''}
           </div>
           <div class="question-text">
             ${q.text}
@@ -4163,7 +4197,7 @@ function renderQuestionCard(q, num) {
       </div>
       <div class="options-list" id="options-${q.id}">
         ${q.options.map((opt, i) => `
-          <div class="option-item" data-qid="${q.id}" data-letter="${opt.letter}" onclick="selectOption(${q.id},'${opt.letter}',${isMulti})">
+          <div class="option-item"${q.answer.includes(opt.letter) ? ' data-correct="1"' : ''} data-qid="${q.id}" data-letter="${opt.letter}" onclick="selectOption(${q.id},'${opt.letter}',${isMulti})">
             <div class="option-radio ${isMulti ? 'checkbox-style' : ''}"></div>
             <div class="option-letter">${String.fromCharCode(65 + i)}</div>
             <div class="option-text">${opt.text}</div>
@@ -4174,9 +4208,9 @@ function renderQuestionCard(q, num) {
         <button class="btn-submit primary" id="submit-${q.id}" disabled onclick="submitAnswer(${q.id})">Submit Answer</button>
       </div>
       <div class="explanation-panel" id="explanation-${q.id}">
-        ${q.hook ? `<div class="answer-hook"><span class="hook-key">🔑 Key</span><span class="hook-text">${q.hook}</span></div>` : ''}
-        ${q.review ? `<div class="review-note"><span class="review-key">⚠ Key contested</span><span class="review-text">${q.reviewNote || 'Answer key flagged during the bank audit.'}</span></div>` : ''}
-        <h4>💡 Explanation</h4>
+        ${q.hook ? `<div class="answer-hook"><span class="hook-key">${icon("key")}Key</span><span class="hook-text">${q.hook}</span></div>` : ''}
+        ${q.review ? `<div class="review-note"><span class="review-key">${icon("alert")}Key contested</span><span class="review-text">${q.reviewNote || 'Answer key flagged during the bank audit.'}</span></div>` : ''}
+        <h4>${icon("bulb")}Explanation</h4>
         <p>${q.explanation}</p>
       </div>
     </div>
@@ -4231,7 +4265,7 @@ function submitAnswer(qid) {
     // In exam mode, just mark as submitted silently
     state.submitted[qid] = true;
     $$(`[id="submit-${qid}"]`).forEach(btn => {
-      btn.textContent = "✓ Saved";
+      btn.innerHTML = `${icon("check")}Saved`;
       btn.disabled = true;
       btn.classList.remove("primary");
       btn.classList.add("secondary");
@@ -4288,13 +4322,19 @@ function updateScoreMatrix() {
   // Update header pills
   const progressPill = $("#pill-progress");
   const scorePill = $("#pill-score");
-  const statusPill = $("#pill-status");
 
-  if (progressPill) progressPill.querySelector(".pill-value").textContent = `${totalAnswered}/${QUESTIONS.length}`;
-  if (scorePill) scorePill.querySelector(".pill-value").textContent = `${score}%`;
-  if (statusPill) {
-    statusPill.querySelector(".pill-value").textContent = passing ? "Passing" : "Not Passing";
-    statusPill.className = `score-pill ${passing ? "passing" : "failing"}`;
+  if (progressPill) {
+    progressPill.querySelector(".pill-value").textContent = `${totalAnswered}/${QUESTIONS.length}`;
+    progressPill.style.setProperty("--p", QUESTIONS.length ? totalAnswered / QUESTIONS.length : 0);
+  }
+  if (scorePill) {
+    scorePill.querySelector(".pill-value").textContent = `${score}%`;
+    // neutral until something is answered; then green/red against the passing mark
+    scorePill.classList.toggle("passing", totalAnswered > 0 && passing);
+    scorePill.classList.toggle("failing", totalAnswered > 0 && !passing);
+    scorePill.title = totalAnswered
+      ? `${passing ? "Passing" : "Not passing yet"} — ${exam.passingScore}% needed to pass`
+      : `${exam.passingScore}% needed to pass`;
   }
 
   // Update dashboard stats
@@ -4321,9 +4361,43 @@ function updateTabProgress() {
   if (elFull) elFull.textContent = `${allAnswered} / ${QUESTIONS.length} Answered`;
 }
 
+// ---------- Answer key view ----------
+// "Answers" turns every question card into a read-only answer key: correct options
+// are highlighted (options carry data-correct) and explanations are open. It's a
+// pure CSS view (body.show-answers) — answers, progress and score are untouched.
+// Unavailable during a timed exam. The preference is remembered across exams.
+const ANSWER_KEY_KEY = "sc_show_answers";
+function answerKeyPref() {
+  try { return localStorage.getItem(ANSWER_KEY_KEY) === "1"; } catch (e) { return false; }
+}
+function applyAnswerKey() {
+  const on = state.mode !== "exam" && answerKeyPref();
+  document.body.classList.toggle("show-answers", on);
+  // the toggle lives in the overflow menu, so mark the menu button while it's on
+  const more = $("#theme-btn");
+  if (more) more.classList.toggle("has-dot", on);
+  const btn = $("#btn-answers");
+  if (btn) {
+    btn.classList.toggle("active", on);
+    btn.setAttribute("aria-pressed", on ? "true" : "false");
+    btn.disabled = state.mode === "exam";
+    btn.innerHTML = `${icon(on ? "eye-off" : "eye")}<span>${on ? "Hide answers" : "Show answers"}</span>`;
+    btn.title = state.mode === "exam"
+      ? "Answer key is unavailable during a timed exam"
+      : on ? "Hide the answer key and go back to answering"
+           : "Show every question's correct answer and explanation";
+  }
+}
+window.toggleAnswerKey = function() {
+  if (state.mode === "exam") return;
+  try { localStorage.setItem(ANSWER_KEY_KEY, answerKeyPref() ? "0" : "1"); } catch (e) { /* ignore */ }
+  applyAnswerKey();
+};
+
 // ---------- Mode Toggle ----------
 function toggleMode(isExam) {
   state.mode = isExam ? "exam" : "study";
+  applyAnswerKey();
 
   const timer = $(".exam-timer");
   const submitExamBtn = $(".submit-exam-btn");
@@ -4433,7 +4507,7 @@ function showResultsModal(answered, correct, score, passed, sections) {
 
   const modal = overlay.querySelector(".results-modal");
   modal.innerHTML = `
-    <h2>${passed ? "🎉 Congratulations!" : "📝 Keep Studying!"}</h2>
+    <h2>${passed ? `${icon("party")}Congratulations!` : `${icon("notebook")}Keep Studying!`}</h2>
     <p class="result-subtitle">${passed ? "You passed the practice exam!" : `You didn't reach the ${exam.passingScore}% passing threshold.`}</p>
 
     <div class="result-score-ring">
@@ -4479,7 +4553,7 @@ function showResultsModal(answered, correct, score, passed, sections) {
           return `<tr>
             <td>${name}</td>
             <td>${data.correct}/${data.total} (${pct}%)</td>
-            <td style="color:${pct >= exam.passingScore ? 'var(--color-correct)' : 'var(--color-incorrect)'}">${pct >= exam.passingScore ? "✓ Pass" : "✕ Needs Work"}</td>
+            <td style="color:${pct >= exam.passingScore ? 'var(--color-correct)' : 'var(--color-incorrect)'}">${pct >= exam.passingScore ? `${icon("check")}Pass` : `${icon("x")}Needs Work`}</td>
           </tr>`;
         }).join("")}
       </tbody>
