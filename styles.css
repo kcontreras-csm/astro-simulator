@@ -920,6 +920,31 @@ body {
   line-height: 1.65;
 }
 
+/* Code in question text, options and explanations (Platform Developer bank) */
+.q-code {
+  margin: 8px 0;
+  padding: 10px 12px;
+  background: var(--bg-workspace);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .8rem;
+  font-weight: 400;
+  line-height: 1.5;
+  white-space: pre;
+  color: var(--text-primary);
+}
+/* let long code scroll inside the card instead of widening the flex row */
+.question-body, .option-text { min-width: 0; }
+.question-text code, .option-text code, .explanation-panel code, .rapid-question code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .9em;
+  padding: 1px 4px;
+  background: var(--bg-workspace);
+  border-radius: 4px;
+}
+
 /* ---------- Exam Results Modal ---------- */
 .results-overlay {
   display: none;

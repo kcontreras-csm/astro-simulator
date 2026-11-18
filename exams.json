@@ -90,5 +90,21 @@
       "Data, Reports & Dashboards",
       "Agentforce & AI"
     ]
+  },
+  {
+    "id": "platform-developer-1",
+    "name": "Platform Developer I",
+    "code": "PLAT-DEV-201",
+    "subtitle": "Salesforce Certified · PLAT-DEV-201 · Practice Questions",
+    "passingScore": 68,
+    "examMinutes": 105,
+    "bank": "platform-developer.json",
+    "count": 193,
+    "categories": [
+      "Developer Fundamentals",
+      "Process Automation & Logic",
+      "User Interface",
+      "Testing, Debugging & Deployment"
+    ]
   }
 ]
