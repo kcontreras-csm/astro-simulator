@@ -112,14 +112,14 @@ const EXAM_REGISTRY = [
     ]
   },
   {
-    id: "platform-developer-1",
+    id: "plat-dev-201",
     name: "Platform Developer I",
     code: "PLAT-DEV-201",
     subtitle: "Salesforce Certified · PLAT-DEV-201 · Practice Questions",
     passingScore: 68,
     examMinutes: 105,
     bank: "platform-developer.json",
-    count: 193,
+    count: 207,
     categories: [
       "Developer Fundamentals",
       "Process Automation & Logic",
